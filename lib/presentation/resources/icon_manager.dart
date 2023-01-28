@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Icon{
+class AppIcon{
   // Navigation bar Icons
   static const IconData home = Icons.home_outlined;
   static const IconData explore = Icons.search_rounded;
