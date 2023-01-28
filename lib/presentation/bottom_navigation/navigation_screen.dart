@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:learning_management_system/presentation/constants/navigation_bar_items.dart';
+import 'package:learning_management_system/presentation/resources/color_manager.dart';
 import 'package:learning_management_system/presentation/widgets/navigation_bar_widgets/account.dart';
 import 'package:learning_management_system/presentation/widgets/navigation_bar_widgets/explore.dart';
 import 'package:learning_management_system/presentation/widgets/navigation_bar_widgets/home_page.dart';
@@ -8,6 +10,7 @@ import 'package:learning_management_system/presentation/widgets/navigation_bar_w
 import 'package:learning_management_system/presentation/widgets/navigation_bar_widgets/wishlist.dart';
 import '../resources/icon_manager.dart';
 import '../resources/string_manager.dart';
+import '../resources/values_manager.dart';
 import 'navigation_state.dart';
 import 'navigation_cubit.dart';
 
@@ -27,38 +30,59 @@ class _NavigationScreenState extends State<NavigationScreen> {
       bottomNavigationBar: BlocBuilder<NavigationCubit,NavigationState>(
         builder: (context,state){
           return BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
+              backgroundColor: ColorManager.black,
+              unselectedItemColor: ColorManager.whiteWhitOpacity60,
+              selectedItemColor: ColorManager.white,
+              selectedFontSize: AppSize.s14,
+              unselectedFontSize: AppSize.s14,
               currentIndex: state.index,
               showUnselectedLabels: false,
             items: const [
               BottomNavigationBarItem(
-                  icon: Icon(
-                    AppIcon.home,
+                  icon: FaIcon(
+                    AppIcon.home2,
                   ),
                 label: AppString.home,
+                activeIcon: Icon(
+                  AppIcon.homeActive
+                ),
               ),
               BottomNavigationBarItem(
-                icon: Icon(
+                icon: FaIcon(
                   AppIcon.explore,
                 ),
                 label: AppString.explore,
+                activeIcon: Icon(
+                    AppIcon.exploreActive
+                ),
               ),
               BottomNavigationBarItem(
                 icon: Icon(
                   AppIcon.myLearning,
                 ),
-                label: AppString.home,
+                label: AppString.myLearning,
+                activeIcon: Icon(
+                    AppIcon.myLearningActive
+                ),
               ),
               BottomNavigationBarItem(
                 icon: Icon(
                   AppIcon.wishlist,
                 ),
                 label: AppString.wishlist,
+                activeIcon: Icon(
+                    AppIcon.wishlistActive
+                ),
               ),
               BottomNavigationBarItem(
                 icon: Icon(
                   AppIcon.account,
                 ),
                 label: AppString.account,
+                activeIcon: Icon(
+                    AppIcon.accountActive
+                ),
               ),
             ],
             onTap: (index){

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 
 class AppIcon{
   // Navigation bar Icons
   static const IconData home = Icons.home_outlined;
-  static const IconData explore = Icons.search_outlined;
+  static const explore = FontAwesomeIcons.search;
   static const IconData myLearning = Icons.slow_motion_video_outlined;
   static const IconData wishlist = Icons.favorite_border_outlined;
   static const IconData account = Icons.account_circle_outlined;
+  static const home2 = FontAwesomeIcons.home;
 
   // Navigation bar ActivationIcon
   static const IconData homeActive = Icons.home;
