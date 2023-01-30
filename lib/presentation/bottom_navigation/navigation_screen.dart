@@ -38,12 +38,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
               unselectedFontSize: AppSize.s14,
               currentIndex: state.index,
               showUnselectedLabels: false,
-              selectedLabelStyle: TextStyle(
-                fontFamily: 'SourceSansPro',
-                fontWeight: FontWeight.w600,
-                color: Colors.white,
-                fontSize: 14.0
-              ),
+              selectedLabelStyle: Theme.of(context).bottomNavigationBarTheme.selectedLabelStyle,
             items: [
               BottomNavigationBarItem(
                   icon: SvgPicture.asset(

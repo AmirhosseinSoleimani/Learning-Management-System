@@ -8,5 +8,8 @@ ThemeData getApplicationTheme(){
       labelMedium: getRegularStyle(fontSize: 14, color: ColorManager.white),
       bodyText1: getRegularStyle(fontSize: 14, color: ColorManager.white)
     ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      selectedLabelStyle: getRegularStyle(fontSize: 14, color: ColorManager.white)
+    )
   );
 }
