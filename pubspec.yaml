@@ -42,6 +42,8 @@ dependencies:
   flutter_svg: ^1.1.6
   rive: ^0.10.1
   dartz: ^0.10.1
+  json_serializable: ^6.5.4
+  json_annotation: ^4.7.0
 
 dev_dependencies:
   flutter_test:
