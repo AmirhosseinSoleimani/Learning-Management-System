@@ -11,6 +11,10 @@ ThemeData getApplicationTheme(){
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedLabelStyle: getRegularStyle(fontSize: 14, color: ColorManager.white),
       unselectedLabelStyle: getRegularStyle(fontSize: 14,color: ColorManager.whiteWhitOpacity60)
+    ),
+    appBarTheme: AppBarTheme(
+      titleTextStyle: getSemiBoldStyle(fontSize: 16, color: ColorManager.white),
+      backgroundColor: ColorManager.black,
     )
   );
 }

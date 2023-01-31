@@ -27,8 +27,6 @@ class _NavigationScreenState extends State<NavigationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-      ),
       bottomNavigationBar: BlocBuilder<NavigationCubit,NavigationState>(
         builder: (context,state){
           return BottomNavigationBar(
