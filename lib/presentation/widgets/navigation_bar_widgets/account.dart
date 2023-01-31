@@ -7,13 +7,26 @@ class Account extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Account',
-          style: Theme.of(context).appBarTheme.titleTextStyle,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: Container(
+          decoration: const BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.white,
+                offset: Offset(0, 1.0),
+              )
+            ]
+          ),
+          child: AppBar(
+            title: Text(
+              'Account',
+              style: Theme.of(context).appBarTheme.titleTextStyle,
+            ),
+            centerTitle: true,
+            backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+          ),
         ),
-        centerTitle: true,
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
       ),
       backgroundColor: ColorManager.black,
       body: const Text(
