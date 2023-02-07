@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 const String navigationIconPath = 'assets/icons/navigation_bar_icons';
 class IconManagerAssets{
@@ -21,6 +20,6 @@ class RiveManagerAssets{
 
 const String authenticationPath = 'assets/image/authentication';
 class ImageManagerAssets{
-  static const String blobs = '$authenticationPath/spline.png';
+  static const String spline = '$authenticationPath/spline.png';
 }
 

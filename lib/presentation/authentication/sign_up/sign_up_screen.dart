@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:learning_management_system/presentation/resources/assets_manager.dart';
 import 'package:rive/rive.dart';
 import 'package:flutter/material.dart';
 
@@ -10,15 +11,40 @@ class SignUpScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          const RiveAnimation.asset('assets/rive_assets/blobs.riv'),
+          Positioned(
+            bottom: 200,
+            left: 65,
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: Image.asset(ImageManagerAssets.spline),
+          ),
+          Positioned(
+            top: 300,
+            right: 80,
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: RotatedBox(
+                quarterTurns: 2,
+                child: Image.asset(ImageManagerAssets.spline)),
+          ),
+          const RiveAnimation.asset(RiveManagerAssets.blobs),
           Positioned.fill(
             child: BackdropFilter(
               filter: ImageFilter.blur(
-              sigmaX: 20,
-              sigmaY: 20
-            ),
+                  sigmaX: 15,
+                  sigmaY: 15
+              ),
               child: const SizedBox(),
+            ),
           ),
+          Positioned.fill(
+            child: BackdropFilter(
+              filter: ImageFilter.blur(
+                  sigmaX: 15,
+                  sigmaY: 15
+              ),
+              child: const SizedBox(),
+            ),
           ),
         ],
       ),
