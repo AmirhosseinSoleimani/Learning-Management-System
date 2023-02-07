@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:learning_management_system/presentation/resources/color_manager.dart';
 
+import '../../resources/route_manager.dart';
+
 class Account extends StatelessWidget {
   const Account({Key? key}) : super(key: key);
 
@@ -31,7 +33,7 @@ class Account extends StatelessWidget {
       backgroundColor: ColorManager.black,
       body: TextButton(
           onPressed: (){
-            print('hhh');
+            Navigator.pushNamed(context, Routes.signUp);
           },
           child: Text(
             'Account',
