@@ -10,11 +10,16 @@ class SignUpScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Positioned.fill(child: BackdropFilter(
-            filter: ImageFilter.blur(),
+          const RiveAnimation.asset('assets/rive_assets/blobs.riv'),
+          Positioned.fill(
+            child: BackdropFilter(
+              filter: ImageFilter.blur(
+              sigmaX: 20,
+              sigmaY: 20
+            ),
+              child: const SizedBox(),
           ),
           ),
-          const RiveAnimation.asset('assets/rive_assets/blobs.riv')
         ],
       ),
     );
