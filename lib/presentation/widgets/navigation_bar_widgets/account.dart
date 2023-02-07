@@ -29,8 +29,14 @@ class Account extends StatelessWidget {
         ),
       ),
       backgroundColor: ColorManager.black,
-      body: const Text(
-          'Account'
+      body: TextButton(
+          onPressed: (){
+            print('hhh');
+          },
+          child: Text(
+            'Account',
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
       ),
     );
   }

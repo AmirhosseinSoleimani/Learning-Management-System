@@ -6,4 +6,8 @@ class AppString{
   static const String myLearning = 'My Learning';
   static const String wishlist = 'Wishlist';
   static const String account = 'Account';
+
+  // Not Found Route
+  static const String noRouteFound = 'No Route Found';
+
 }
