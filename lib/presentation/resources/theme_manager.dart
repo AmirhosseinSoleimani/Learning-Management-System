@@ -6,6 +6,7 @@ import 'package:learning_management_system/presentation/resources/values_manager
 ThemeData getApplicationTheme(){
   return ThemeData(
     textTheme: TextTheme(
+      headline1: getBoldStyle(fontSize: AppSize.s40, color: ColorManager.black),
       labelMedium: getRegularStyle(fontSize: AppSize.s14, color: ColorManager.white),
       bodyText1: getRegularStyle(fontSize: AppSize.s14, color: ColorManager.white)
     ),

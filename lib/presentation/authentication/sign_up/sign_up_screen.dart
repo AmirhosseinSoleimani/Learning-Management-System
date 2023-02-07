@@ -1,7 +1,11 @@
 import 'dart:ui';
+import 'package:flutter/services.dart';
 import 'package:learning_management_system/presentation/resources/assets_manager.dart';
+import 'package:learning_management_system/presentation/resources/values_manager.dart';
 import 'package:rive/rive.dart';
 import 'package:flutter/material.dart';
+
+import '../../resources/string_manager.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -45,6 +49,22 @@ class SignUpScreen extends StatelessWidget {
               ),
               child: const SizedBox(),
             ),
+          ),
+          SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: AppPadding.p20,
+                    vertical: AppPadding.p8
+                ),
+                child: Column(
+                  children: [
+                    Text(
+                      AppStringSignUp.headLine,
+                      style: Theme.of(context).textTheme.headline1,
+                    )
+                  ],
+                ),
+              ),
           ),
         ],
       ),

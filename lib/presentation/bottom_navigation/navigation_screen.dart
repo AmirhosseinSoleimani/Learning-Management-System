@@ -48,7 +48,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
                     width: AppSize.s30,
                     height: AppSize.s30,
                   ),
-                  label: AppString.home,
+                  label: AppStringNavigationBar.home,
                   activeIcon: SvgPicture.asset(
                     IconManagerAssets.home,
                     color: ColorManager.white,
@@ -63,7 +63,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
                   width: AppSize.s30,
                   height: AppSize.s30,
                 ),
-                label: AppString.explore,
+                label: AppStringNavigationBar.explore,
                 activeIcon: SvgPicture.asset(
                   IconManagerAssets.search,
                   color: ColorManager.white,
@@ -78,7 +78,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
                   width: AppSize.s30,
                   height: AppSize.s30,
                 ),
-                label: AppString.myLearning,
+                label: AppStringNavigationBar.myLearning,
                 activeIcon: SvgPicture.asset(
                   IconManagerAssets.videoPlayer,
                   color: ColorManager.white,
@@ -93,7 +93,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
                   width: AppSize.s30,
                   height: AppSize.s30,
                 ),
-                label: AppString.wishlist,
+                label: AppStringNavigationBar.wishlist,
                 activeIcon: SvgPicture.asset(
                   IconManagerAssets.favourite,
                   color: ColorManager.white,
@@ -108,7 +108,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
                   width: AppSize.s30,
                   height: AppSize.s30,
                 ),
-                label: AppString.account,
+                label: AppStringNavigationBar.account,
                 activeIcon: SvgPicture.asset(
                   IconManagerAssets.account,
                   color: ColorManager.white,
