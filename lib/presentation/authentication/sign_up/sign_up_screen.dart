@@ -1,10 +1,12 @@
 import 'dart:ui';
 import 'package:flutter/services.dart';
 import 'package:learning_management_system/presentation/resources/assets_manager.dart';
+import 'package:learning_management_system/presentation/resources/color_manager.dart';
 import 'package:learning_management_system/presentation/resources/values_manager.dart';
 import 'package:rive/rive.dart';
 import 'package:flutter/material.dart';
 
+import '../../widgets/widgets.dart';
 import '../../resources/string_manager.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -50,6 +52,7 @@ class SignUpScreen extends StatelessWidget {
               child: const SizedBox(),
             ),
           ),
+
           SafeArea(
               child: Padding(
                 padding: const EdgeInsets.symmetric(
@@ -57,19 +60,70 @@ class SignUpScreen extends StatelessWidget {
                     vertical: AppPadding.p8
                 ),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       AppStringSignUp.headerText,
                       style: Theme.of(context).textTheme.headline1,
                     ),
-                    const SizedBox(
-                      height: 15.0,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: AppPadding.p20),
+                      child: Column(
+                        children: [
+                          glassButton(
+                              TextButton(
+                                  onPressed: (){},
+                                  child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    AppStringSignUp.signInButtonText,
+                                    style: Theme.of(context).textTheme.button,
+                                  ),
+                                  const SizedBox(
+                                    width: AppPadding.p12,
+                                  ),
+                                  Icon(
+                                    Icons.arrow_forward,
+                                    color: ColorManager.black,
+                                    size: AppSize.s20,
+                                  ),
+                                ],
+                              ),
+                              ),
+                              0.1,
+                              0.5,
+                              context),
+                          const SizedBox(
+                            height: AppSize.s16,
+                          ),
+                          glassButton(
+                              TextButton(
+                                onPressed: (){},
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      AppStringSignUp.signUpButtonText,
+                                      style: Theme.of(context).textTheme.button,
+                                    ),
+                                    const SizedBox(
+                                      width: AppSize.s12,
+                                    ),
+                                    Icon(
+                                      Icons.arrow_forward,
+                                      color: ColorManager.black,
+                                      size: AppSize.s20,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              0.1,
+                              0.5,
+                              context)
+                        ],
+                      ),
                     ),
-                    Text(
-                      AppStringSignUp.bodyText,
-                      textAlign: TextAlign.justify,
-                      style: Theme.of(context).textTheme.bodyText2,
-                    )
                   ],
                 ),
               ),
