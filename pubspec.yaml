@@ -36,9 +36,6 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  bloc: ^8.1.0
-  flutter_bloc: ^8.1.1
-  equatable: ^2.0.5
   flutter_svg: ^1.1.6
   rive: ^0.10.1
   dartz: ^0.10.1
@@ -48,6 +45,7 @@ dependencies:
   retrofit: ^3.3.1
   build_runner: ^2.3.2
   retrofit_generator: ^4.2.0
+  provider: ^6.0.5
 
 dev_dependencies:
   flutter_test:
@@ -75,6 +73,7 @@ flutter:
   assets:
     - assets/icons/navigation_bar_icons/
     - assets/image/authentication/
+    - assets/image/home_page/
     - assets/rive_assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
