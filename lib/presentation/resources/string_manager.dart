@@ -12,6 +12,12 @@ class AppStringNoRouteFound{
 }
 
 
+// HomePage
+class AppStringHomePage{
+  static const String headerText = 'Explore';
+}
+
+
 // SignUp
 class AppStringSignUp{
   static const String headerText = 'Sign Up to Learning Management System';

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:learning_management_system/presentation/resources/assets_manager.dart';
 import 'package:learning_management_system/presentation/resources/values_manager.dart';
 import '../../resources/color_manager.dart';
+import '../../resources/string_manager.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -28,9 +29,13 @@ class _HomePageState extends State<HomePage> {
             slivers: [
               SliverAppBar(
                 expandedHeight: AppSize.s300,
+                stretch: true,
                 flexibleSpace: Padding(
                   padding: const EdgeInsets.all(AppPadding.p12),
                   child: FlexibleSpaceBar(
+                    stretchModes: const [
+                      StretchMode.zoomBackground
+                    ],
                     background: Stack(
                       children: [
                         Container(
@@ -50,22 +55,35 @@ class _HomePageState extends State<HomePage> {
               ),
               SliverAppBar(
                 pinned: true,
+                expandedHeight: 150,
                 flexibleSpace: Padding(
                   padding: const EdgeInsets.all(AppPadding.p12),
                   child: Container(
                     width: double.infinity,
-                    height: AppSize.s40,
-                    color: ColorManager.white,
-                    child: TextFormField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          width: AppSize.s1,
-                          color: Colors.grey,
+                    height: 120,
+                    color: ColorManager.black,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                            AppStringHomePage.headerText,
+                            style: Theme.of(context).textTheme.headline2,
                         ),
-                          borderRadius: BorderRadius.circular(AppPadding.p12)
-                      )
-                    ),
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        TextFormField(
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              width: AppSize.s1,
+                              color: Colors.grey,
+                            ),
+                              borderRadius: BorderRadius.circular(AppPadding.p12)
+                          )
+                        ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
