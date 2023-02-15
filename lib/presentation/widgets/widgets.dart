@@ -4,7 +4,15 @@ import 'package:flutter_svg/svg.dart';
 import 'package:learning_management_system/presentation/resources/values_manager.dart';
 import '../resources/string_manager.dart';
 
-Widget glassButton(Widget child,double startOpacity,double endOpacity,BuildContext context,double heightSize,double radiusSize){
+Widget glassButton(
+    {
+      required Widget child,
+      required double startOpacity,
+      required double endOpacity,
+      required BuildContext context,
+      required double heightSize,
+      required double radiusSize,
+    }){
     return ClipRRect(
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: AppSize.s4, sigmaY: AppSize.s4),
@@ -29,7 +37,9 @@ Widget glassButton(Widget child,double startOpacity,double endOpacity,BuildConte
 }
 
 
-BottomNavigationBarItem customNavigationBar(Color color,double iconSize,String svgPicturePath){
+BottomNavigationBarItem customNavigationBar(
+    {required Color color, required double iconSize, required String svgPicturePath,required String svgActivePicturePath}
+    ){
   return BottomNavigationBarItem(
     icon: SvgPicture.asset(
       svgPicturePath,
@@ -39,7 +49,7 @@ BottomNavigationBarItem customNavigationBar(Color color,double iconSize,String s
     ),
     label: AppStringNavigationBar.home,
     activeIcon: SvgPicture.asset(
-      svgPicturePath,
+      svgActivePicturePath,
       color: color,
       width: iconSize,
       height: iconSize,

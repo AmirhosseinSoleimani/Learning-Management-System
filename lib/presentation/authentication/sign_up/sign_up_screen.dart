@@ -4,7 +4,6 @@ import 'package:learning_management_system/presentation/resources/color_manager.
 import 'package:learning_management_system/presentation/resources/values_manager.dart';
 import 'package:rive/rive.dart';
 import 'package:flutter/material.dart';
-
 import '../../widgets/widgets.dart';
 import '../../resources/string_manager.dart';
 
@@ -16,27 +15,9 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  double firstBottomSize = 0.0;
-  double secondBottomSize = 0.0;
-  double firstBottomOpacity = 0.0;
-  double secondBottomOpacity = 0.0;
-
-  Future startAnimation() async{
-    await Future.delayed(const Duration(milliseconds: 500));
-    setState(() {
-      secondBottomSize = 50;
-      secondBottomOpacity = 1.0;
-    });
-    await Future.delayed(const Duration(milliseconds: 700));
-    setState(() {
-      firstBottomSize = 140;
-      firstBottomOpacity = 1.0;
-    });
-  }
 
   @override
   void initState() {
-    startAnimation();
     super.initState();
   }
 
@@ -65,55 +46,53 @@ class _SignUpScreenState extends State<SignUpScreen> {
           Positioned.fill(
             child: BackdropFilter(
               filter: ImageFilter.blur(
-                  sigmaX: AppSize.s16,
-                  sigmaY: AppSize.s16
-              ),
+                  sigmaX: AppSize.s16, sigmaY: AppSize.s16),
               child: const SizedBox(),
             ),
           ),
           Positioned.fill(
             child: BackdropFilter(
               filter: ImageFilter.blur(
-                  sigmaX: AppSize.s16,
-                  sigmaY: AppSize.s16
-              ),
+                  sigmaX: AppSize.s16, sigmaY: AppSize.s16),
               child: const SizedBox(),
             ),
           ),
           AnimatedPositioned(
-            bottom: firstBottomSize,
-            left: 12,
+            bottom: 0,
             right: 12,
             curve: Curves.easeInOutSine,
             duration: const Duration(milliseconds: 800),
             child: AnimatedOpacity(
-              opacity: firstBottomOpacity,
+              opacity: 1.0,
               curve: Curves.easeIn,
               duration: const Duration(milliseconds: 500),
               child: glassButton(
-                  TextButton(
-                    onPressed: (){},
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          AppStringSignUp.signInButtonText,
-                          style: Theme.of(context).textTheme.button,
-                        ),
-                        const SizedBox(
-                          width: AppPadding.p12,
-                        ),
-                        Icon(
-                          Icons.arrow_forward,
-                          color: ColorManager.black,
-                          size: AppSize.s20,
-                        ),
-                      ],
-                    ),
+                child: TextButton(
+                  onPressed: () {},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        AppStringSignUp.signInButtonText,
+                        style: Theme.of(context).textTheme.button,
+                      ),
+                      const SizedBox(
+                        width: AppPadding.p12,
+                      ),
+                      Icon(
+                        Icons.arrow_forward,
+                        color: ColorManager.black,
+                        size: AppSize.s20,
+                      ),
+                    ],
                   ),
-                  AppSize.s0_1,
-                  AppSize.s0_5,
-                  context),
+                ),
+                startOpacity: AppSize.s0_1,
+                endOpacity: AppSize.s0_5,
+                context: context,
+                heightSize: AppSize.s60,
+                radiusSize: AppSize.s20,
+              ),
             ),
           ),
           AnimatedPositioned(
@@ -121,14 +100,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
             curve: Curves.easeInOutSine,
             left: 12,
             right: 12,
-            bottom: secondBottomSize,
+            bottom: 140,
             child: AnimatedOpacity(
               curve: Curves.easeIn,
-              opacity: secondBottomOpacity,
+              opacity: 1.0,
               duration: const Duration(milliseconds: 500),
               child: glassButton(
-                  TextButton(
-                    onPressed: (){},
+                  child: TextButton(
+                    onPressed: () {},
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -147,28 +126,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ],
                     ),
                   ),
-                  AppSize.s0_1,
-                  AppSize.s0_5,
-                  context),
+                  startOpacity: AppSize.s0_1,
+                  endOpacity: AppSize.s0_5,
+                  context: context,
+                  heightSize: AppSize.s60,
+                  radiusSize: AppSize.s20),
             ),
           ),
-
           SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: AppPadding.p20,
-                    vertical: AppPadding.p8
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      AppStringSignUp.headerText,
-                      style: Theme.of(context).textTheme.headline1,
-                    ),
-                  ],
-                ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                  horizontal: AppPadding.p20, vertical: AppPadding.p8),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    AppStringSignUp.headerText,
+                    style: Theme.of(context).textTheme.headline1,
+                  ),
+                ],
               ),
+            ),
           ),
         ],
       ),

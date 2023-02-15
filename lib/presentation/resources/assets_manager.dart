@@ -19,7 +19,11 @@ class RiveManagerAssets{
 }
 
 const String authenticationPath = 'assets/image/authentication';
+const String homePagePath = 'assets/image/home_page';
+
 class ImageManagerAssets{
   static const String spline = '$authenticationPath/spline.png';
+  static const String headerHomePage = '$homePagePath/LMS.jpg';
 }
+
 
