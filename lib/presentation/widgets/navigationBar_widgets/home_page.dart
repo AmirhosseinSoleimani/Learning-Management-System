@@ -28,12 +28,23 @@ class _HomePageState extends State<HomePage> {
             slivers: [
               SliverAppBar(
                 expandedHeight: AppSize.s300,
-                flexibleSpace: FlexibleSpaceBar(
-                  background: Image(
-                    image: AssetImage(
-                      ImageManagerAssets.headerHomePage,
+                flexibleSpace: Padding(
+                  padding: const EdgeInsets.all(AppPadding.p12),
+                  child: FlexibleSpaceBar(
+                    background: Stack(
+                      children: [
+                        Container(
+                          color: ColorManager.white,
+                        ),
+                        const Positioned.fill(
+                          child: Image(
+                            image: AssetImage(
+                              ImageManagerAssets.headerHomePage,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    fit: BoxFit.cover,
                   ),
                 ),
               ),
