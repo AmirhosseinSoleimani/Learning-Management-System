@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:learning_management_system/presentation/resources/assets_manager.dart';
 import 'package:learning_management_system/presentation/resources/values_manager.dart';
+import 'package:provider/provider.dart';
+import '../../../app/provider/search/search_provider.dart';
 import '../../resources/color_manager.dart';
 import '../../resources/string_manager.dart';
 
@@ -12,8 +15,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+
   @override
   Widget build(BuildContext context) {
+    print('ggg');
     GlobalKey<RefreshIndicatorState> refreshKey = GlobalKey<RefreshIndicatorState>();
     Future onRefresh() async{
       await Future.delayed(const Duration(seconds: 4));
@@ -53,40 +59,59 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              SliverAppBar(
-                pinned: true,
-                expandedHeight: 150,
-                flexibleSpace: Padding(
-                  padding: const EdgeInsets.all(AppPadding.p12),
-                  child: Container(
-                    width: double.infinity,
-                    height: 120,
-                    color: ColorManager.black,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                            AppStringHomePage.headerText,
-                            style: Theme.of(context).textTheme.headline2,
+              Consumer<SearchProvider>(
+                builder: (context,searchProvider,child){
+                  return SliverAppBar(
+                    pinned: true,
+                    expandedHeight: 150,
+                    toolbarHeight: 150,
+                    flexibleSpace: Padding(
+                      padding: const EdgeInsets.all(AppPadding.p12),
+                      child: SingleChildScrollView(
+                        child: Container(
+                          width: double.infinity,
+                          height: 120,
+                          color: ColorManager.black,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                AppStringHomePage.headerText,
+                                style: Theme.of(context).textTheme.headline2,
+                              ),
+                              const SizedBox(
+                                height: AppSize.s16,
+                              ),
+                              SizedBox(
+                                width: double.infinity,
+                                height: AppSize.s40,
+                                child: TextFormField(
+                                  onTap: (){
+                                    context.read<SearchProvider>().requestFocus(context: context);
+                                  },
+                                  focusNode: searchProvider.searchFocusNode,
+                                  decoration: InputDecoration(
+                                    contentPadding: const EdgeInsets.symmetric(vertical: AppSize.s6),
+                                    border: OutlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                      borderRadius: BorderRadius.circular(AppSize.s4),
+                                    ),
+                                    focusColor: ColorManager.lightBlue1,
+                                    filled: true,
+                                    fillColor: ColorManager.lightGrey,
+                                    prefixIcon: searchProvider.searchFocusNode.hasFocus ? Icon(CupertinoIcons.search,color: ColorManager.lightBlue1): Icon(CupertinoIcons.search,color: Colors.red),
+                                    hintText: 'What do you want to learn?',
+                                  ),
+                                  keyboardType: TextInputType.name,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                        SizedBox(
-                          height: 10.0,
-                        ),
-                        TextFormField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              width: AppSize.s1,
-                              color: Colors.grey,
-                            ),
-                              borderRadius: BorderRadius.circular(AppPadding.p12)
-                          )
-                        ),
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
-                ),
+                  );
+                },
               ),
               SliverList(
                   delegate: SliverChildBuilderDelegate(
