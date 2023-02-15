@@ -16,8 +16,8 @@ class NavigationBarScreen extends StatelessWidget {
           return BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
               backgroundColor: ColorManager.black,
-              unselectedItemColor: ColorManager.whiteWhitOpacity60,
-              selectedItemColor: ColorManager.white,
+              unselectedItemColor: ColorManager.lightGrey,
+              selectedItemColor: ColorManager.lightBlue1,
               selectedFontSize: AppSize.s14,
               unselectedFontSize: AppSize.s14,
               showUnselectedLabels: true,

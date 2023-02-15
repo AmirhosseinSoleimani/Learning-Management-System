@@ -1,30 +1,24 @@
-import 'package:flutter/material.dart';
-import '../../../presentation/resources/assets_manager.dart';
+import 'package:flutter/cupertino.dart';
 import '../../../presentation/resources/color_manager.dart';
+import '../../../presentation/resources/string_manager.dart';
 import '../../../presentation/resources/values_manager.dart';
-import '../../../presentation/widgets/navigation_bar_widgets/account.dart';
-import '../../../presentation/widgets/navigation_bar_widgets/explore.dart';
-import '../../../presentation/widgets/navigation_bar_widgets/home_page.dart';
-import '../../../presentation/widgets/navigation_bar_widgets/my_learning.dart';
-import '../../../presentation/widgets/navigation_bar_widgets/wishlist.dart';
+import '../../../presentation/widgets/navigationBar_widgets/account.dart';
+import '../../../presentation/widgets/navigationBar_widgets/home_page.dart';
+import '../../../presentation/widgets/navigationBar_widgets/my_learning.dart';
 import '../../../presentation/widgets/widgets.dart';
 
 class NavigationBarProvider with ChangeNotifier{
   final List<BottomNavigationBarItem> _bottomNavigationBarItems = [
-    customNavigationBar(color: ColorManager.white, iconSize: AppSize.s30, svgPicturePath: IconManagerAssets.homeLight, svgActivePicturePath: IconManagerAssets.home),
-    customNavigationBar(color: ColorManager.white, iconSize: AppSize.s30, svgPicturePath: IconManagerAssets.searchLight, svgActivePicturePath: IconManagerAssets.search),
-    customNavigationBar(color: ColorManager.white, iconSize: AppSize.s30, svgPicturePath: IconManagerAssets.videoPlayerLight, svgActivePicturePath: IconManagerAssets.videoPlayer),
-    customNavigationBar(color: ColorManager.white, iconSize: AppSize.s30, svgPicturePath: IconManagerAssets.favouriteLight, svgActivePicturePath: IconManagerAssets.favourite),
-    customNavigationBar(color: ColorManager.white, iconSize: AppSize.s30, svgPicturePath: IconManagerAssets.accountLight, svgActivePicturePath: IconManagerAssets.account),
+    customNavigationBar(color: ColorManager.lightGrey, activeColor: ColorManager.lightBlue1, iconSize: AppSize.s30, labelText: AppStringNavigationBar.explore, icon: CupertinoIcons.search, activeIcon: CupertinoIcons.search),
+    customNavigationBar(color: ColorManager.lightGrey, activeColor: ColorManager.lightBlue1, iconSize: AppSize.s30, labelText: AppStringNavigationBar.myLearning, icon: CupertinoIcons.play_circle, activeIcon: CupertinoIcons.play_circle),
+    customNavigationBar(color: ColorManager.lightGrey, activeColor: ColorManager.lightBlue1, iconSize: AppSize.s30,labelText: AppStringNavigationBar.account, icon: CupertinoIcons.person_alt_circle, activeIcon: CupertinoIcons.person_alt_circle),
   ];
 
   List<BottomNavigationBarItem> get bottomNavigationBarItems => _bottomNavigationBarItems;
 
   final List<Widget> _bottomNavigationBarWidget = [
     const HomePage(),
-    const Explore(),
     const MyLearning(),
-    const Wishlist(),
     const Account(),
   ];
 

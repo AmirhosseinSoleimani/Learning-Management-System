@@ -1,8 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:learning_management_system/presentation/resources/values_manager.dart';
-import '../resources/string_manager.dart';
 
 Widget glassButton(
     {
@@ -38,21 +36,19 @@ Widget glassButton(
 
 
 BottomNavigationBarItem customNavigationBar(
-    {required Color color, required double iconSize, required String svgPicturePath,required String svgActivePicturePath}
+    {required Color color, required Color activeColor, required double iconSize,required String labelText,required IconData icon,required IconData activeIcon}
     ){
   return BottomNavigationBarItem(
-    icon: SvgPicture.asset(
-      svgPicturePath,
+    icon: Icon(
+      icon,
       color: color,
-      width: iconSize,
-      height: iconSize,
+      size: iconSize,
     ),
-    label: AppStringNavigationBar.home,
-    activeIcon: SvgPicture.asset(
-      svgActivePicturePath,
-      color: color,
-      width: iconSize,
-      height: iconSize,
+    label: labelText,
+    activeIcon: Icon(
+      activeIcon,
+      color: activeColor,
+      size: iconSize,
     ),
   );
 }

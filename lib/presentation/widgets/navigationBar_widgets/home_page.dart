@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learning_management_system/presentation/resources/assets_manager.dart';
 import 'package:learning_management_system/presentation/resources/values_manager.dart';
-
 import '../../resources/color_manager.dart';
 
 class HomePage extends StatefulWidget {
