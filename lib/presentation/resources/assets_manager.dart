@@ -23,7 +23,7 @@ const String homePagePath = 'assets/image/home_page';
 
 class ImageManagerAssets{
   static const String spline = '$authenticationPath/spline.png';
-  static const String headerHomePage = '$homePagePath/LMS.jpg';
+  static const String headerHomePage = '$homePagePath/headerHomePage.png';
 }
 
 
