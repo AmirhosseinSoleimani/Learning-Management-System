@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learning_management_system/presentation/authentication/sign_up/sign_up_screen.dart';
 import 'package:learning_management_system/presentation/resources/string_manager.dart';
-import '../bottom_navigationBar/navigation_screen.dart';
+import '../bottom_navigationBar/navigationBar_screen.dart';
 
 class Routes{
 
