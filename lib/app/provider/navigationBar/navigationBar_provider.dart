@@ -13,4 +13,13 @@ class NavigationBarProvider with ChangeNotifier{
     customNavigationBar(color: ColorManager.white, iconSize: AppSize.s30, svgPicturePath: IconManagerAssets.favouriteLight, svgActivePicturePath: IconManagerAssets.favourite),
     customNavigationBar(color: ColorManager.white, iconSize: AppSize.s30, svgPicturePath: IconManagerAssets.accountLight, svgActivePicturePath: IconManagerAssets.account),
   ];
+
+  int _selectedIndex = 0;
+
+  int get selectedIndex => _selectedIndex;
+
+  set selectedIndex(int value){
+    _selectedIndex = value;
+    notifyListeners();
+  }
 }
