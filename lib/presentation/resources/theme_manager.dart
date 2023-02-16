@@ -8,7 +8,8 @@ ThemeData getApplicationTheme(){
     textTheme: TextTheme(
       headline1: getBoldStyle(fontSize: AppSize.s40, color: ColorManager.black),
       headline2: getSemiBoldStyle(fontSize: AppSize.s28, color: ColorManager.white),
-      labelMedium: getRegularStyle(fontSize: AppSize.s14, color: ColorManager.white),
+      headline3: getRegularStyle(fontSize: AppSize.s18, color: ColorManager.white),
+      labelMedium: getRegularStyle(fontSize: AppSize.s14, color: ColorManager.darkWhite),
       bodyText1: getRegularStyle(fontSize: AppSize.s14, color: ColorManager.white),
       bodyText2: getRegularStyle(fontSize: AppSize.s14, color: ColorManager.black),
       button: getSemiBoldStyle(fontSize: AppSize.s16, color: ColorManager.black),

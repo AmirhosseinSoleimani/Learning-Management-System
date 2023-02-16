@@ -60,19 +60,50 @@ class _HomePageState extends State<HomePage> {
           physics: const BouncingScrollPhysics(),
           slivers: [
             SliverAppBar(
+              title: _isShrink ? Text(
+                  AppStringHomePage.headerText,
+                  style: Theme.of(context).textTheme.headline3) :null,
+              centerTitle: true,
+              bottom: _isShrink ? PreferredSize(
+                preferredSize: const Size.fromHeight(0),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: AppPadding.p12),
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: AppSize.s40,
+                    child: TextFormField(
+                      onTap: (){
+                        context.read<SearchProvider>().requestFocus(context: context);
+                      },
+                      // focusNode: searchProvider.searchFocusNode,
+                      decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.symmetric(vertical: AppSize.s6),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(AppSize.s4),
+                        ),
+                        focusColor: ColorManager.lightBlue1,
+                        filled: true,
+                        fillColor: ColorManager.lightGrey,
+                        prefixIcon: Icon(CupertinoIcons.search,color: ColorManager.darkWhite),
+                        hintText: AppStringHomePage.hintSearchBarText,
+                        hintStyle: Theme.of(context).textTheme.labelMedium,
+                      ),
+                      keyboardType: TextInputType.name,
+                    ),
+                  ),
+                ),
+              ) : null,
               expandedHeight: AppSize.s300,
               stretch: true,
               pinned: true,
-              toolbarHeight: 60,
+              toolbarHeight: 80,
               flexibleSpace: Padding(
                 padding: const EdgeInsets.all(AppPadding.p12),
                 child: FlexibleSpaceBar(
                   stretchModes: const [
                     StretchMode.zoomBackground
                   ],
-                  title: _isShrink ? Text(
-                    'Explore',
-                    style: TextStyle(color: Colors.red),):null,
                   centerTitle: true,
                   background: _isShrink ? null:Stack(
                     children: [
