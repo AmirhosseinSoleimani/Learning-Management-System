@@ -16,36 +16,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  ScrollController? scrollController;
-
-  bool lastStatus = true;
-
-  bool get isShrink{
-    return scrollController != null && scrollController!.hasClients && scrollController!.offset > (AppSize.s220);
-  }
-
-
-  void scrollListener(){
-    if(isShrink != lastStatus){
-      setState(() {
-        lastStatus = isShrink;
-      });
-    }
-  }
-
-
-
 
   @override
   void initState() {
     super.initState();
-    scrollController = ScrollController()..addListener(scrollListener);
+    Provider.of<SearchProvider>(context,listen: false).scrollController = ScrollController()..addListener(Provider.of<SearchProvider>(context,listen: false).scrollListener);
   }
 
   @override
   void dispose() {
-    scrollController?.removeListener(scrollListener);
-    scrollController?.dispose();
+    Provider.of<SearchProvider>(context,listen: false).scrollController?.removeListener(Provider.of<SearchProvider>(context,listen: false).scrollListener);
+    Provider.of<SearchProvider>(context,listen: false).scrollController?.dispose();
     super.dispose();
   }
 
@@ -55,7 +36,7 @@ class _HomePageState extends State<HomePage> {
     final searchProvider = Provider.of<SearchProvider>(context);
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
-        statusBarColor: isShrink ? ColorManager.lightBlack1 : ColorManager.black
+        statusBarColor: searchProvider.isShrink ? ColorManager.lightBlack1 : ColorManager.black
       ),
     );
     print('ggg');
@@ -63,16 +44,16 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         backgroundColor: ColorManager.black,
         body: CustomScrollView(
-          controller: scrollController,
+          controller: searchProvider.scrollController,
           physics: const BouncingScrollPhysics(),
           slivers: [
             SliverAppBar(
-              backgroundColor: isShrink ? ColorManager.lightBlack1:ColorManager.black,
-              title: isShrink ? Text(
+              backgroundColor: searchProvider.isShrink ? ColorManager.lightBlack1:ColorManager.black,
+              title: searchProvider.isShrink ? Text(
                   AppStringHomePage.headerText,
                   style: Theme.of(context).textTheme.headline3) :null,
               centerTitle: true,
-              bottom: isShrink ? PreferredSize(
+              bottom: searchProvider.isShrink ? PreferredSize(
                 preferredSize: const Size.fromHeight(AppSize.s0),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: AppPadding.p12,vertical: AppPadding.p12),
@@ -113,7 +94,7 @@ class _HomePageState extends State<HomePage> {
                     StretchMode.zoomBackground
                   ],
                   centerTitle: true,
-                  background: isShrink ? null:Stack(
+                  background: searchProvider.isShrink ? null:Stack(
                     children: [
                       Container(
                         color: ColorManager.white,
@@ -134,8 +115,8 @@ class _HomePageState extends State<HomePage> {
               builder: (context,searchProvider,child){
                 return SliverAppBar(
                   pinned: false,
-                  expandedHeight: isShrink ? AppSize.s0 : AppSize.s120,
-                  toolbarHeight: isShrink ? AppSize.s0 : AppSize.s120,
+                  expandedHeight: searchProvider.isShrink ? AppSize.s0 : AppSize.s120,
+                  toolbarHeight: searchProvider.isShrink ? AppSize.s0 : AppSize.s120,
                   flexibleSpace: Padding(
                     padding: const EdgeInsets.all(AppPadding.p12),
                     child: FlexibleSpaceBar(
