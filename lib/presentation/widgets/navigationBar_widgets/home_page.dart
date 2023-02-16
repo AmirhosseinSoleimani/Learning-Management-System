@@ -15,6 +15,34 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  ScrollController? _scrollController;
+  bool lastStatus = true;
+  double height = 200;
+
+  void _scrollListener(){
+    if(_isShrink != lastStatus){
+      setState(() {
+        lastStatus = _isShrink;
+      });
+    }
+  }
+
+  bool get _isShrink{
+    return _scrollController != null && _scrollController!.hasClients && _scrollController!.offset > (220);
+  }
+  
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController()..addListener(_scrollListener);
+  }
+
+  @override
+  void dispose() {
+    _scrollController?.removeListener(_scrollListener);
+    _scrollController?.dispose();
+    super.dispose();
+  }
 
 
   @override
@@ -27,102 +55,128 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: ColorManager.black,
-        body: RefreshIndicator(
-          key: refreshKey,
-          onRefresh: onRefresh,
-          child: CustomScrollView(
-            physics: const BouncingScrollPhysics(),
-            slivers: [
-              SliverAppBar(
-                expandedHeight: AppSize.s300,
-                stretch: true,
-                flexibleSpace: Padding(
-                  padding: const EdgeInsets.all(AppPadding.p12),
-                  child: FlexibleSpaceBar(
-                    stretchModes: const [
-                      StretchMode.zoomBackground
-                    ],
-                    background: Stack(
-                      children: [
-                        Container(
-                          color: ColorManager.white,
-                        ),
-                        const Positioned.fill(
-                          child: Image(
-                            image: AssetImage(
-                              ImageManagerAssets.headerHomePage,
-                            ),
+        body: CustomScrollView(
+          controller: _scrollController,
+          physics: const BouncingScrollPhysics(),
+          slivers: [
+            SliverAppBar(
+              expandedHeight: AppSize.s300,
+              stretch: true,
+              pinned: true,
+              toolbarHeight: 60,
+              flexibleSpace: Padding(
+                padding: const EdgeInsets.all(AppPadding.p12),
+                child: FlexibleSpaceBar(
+                  stretchModes: const [
+                    StretchMode.zoomBackground
+                  ],
+                  title: _isShrink ? Text(
+                    'Explore',
+                    style: TextStyle(color: Colors.red),):null,
+                  centerTitle: true,
+                  background: _isShrink ? null:Stack(
+                    children: [
+                      Container(
+                        color: ColorManager.white,
+                      ),
+                      const Positioned.fill(
+                        child: Image(
+                          image: AssetImage(
+                            ImageManagerAssets.headerHomePage,
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
-              Consumer<SearchProvider>(
-                builder: (context,searchProvider,child){
-                  return SliverAppBar(
-                    pinned: true,
-                    expandedHeight: 150,
-                    toolbarHeight: 150,
-                    flexibleSpace: Padding(
-                      padding: const EdgeInsets.all(AppPadding.p12),
-                      child: SingleChildScrollView(
-                        child: Container(
+            ),
+            Consumer<SearchProvider>(
+              builder: (context,searchProvider,child){
+                return SliverAppBar(
+                  pinned: true,
+                  expandedHeight: _isShrink ? 80 : 150,
+                  toolbarHeight: _isShrink ? 80 : 150,
+                  flexibleSpace: Padding(
+                    padding: const EdgeInsets.all(AppPadding.p12),
+                    child: FlexibleSpaceBar(
+                      centerTitle: true,
+                      background: Container(
+                        width: double.infinity,
+                        height: 120,
+                        color: Colors.green,
+                        child: _isShrink ?  SizedBox(
                           width: double.infinity,
-                          height: 120,
-                          color: ColorManager.black,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                AppStringHomePage.headerText,
-                                style: Theme.of(context).textTheme.headline2,
+                          height: AppSize.s40,
+                          child: TextFormField(
+                            onTap: (){
+                              context.read<SearchProvider>().requestFocus(context: context);
+                            },
+                            focusNode: searchProvider.searchFocusNode,
+                            decoration: InputDecoration(
+                              contentPadding: const EdgeInsets.symmetric(vertical: AppSize.s6),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(AppSize.s4),
                               ),
-                              const SizedBox(
-                                height: AppSize.s16,
-                              ),
-                              SizedBox(
-                                width: double.infinity,
-                                height: AppSize.s40,
-                                child: TextFormField(
-                                  onTap: (){
-                                    context.read<SearchProvider>().requestFocus(context: context);
-                                  },
-                                  focusNode: searchProvider.searchFocusNode,
-                                  decoration: InputDecoration(
-                                    contentPadding: const EdgeInsets.symmetric(vertical: AppSize.s6),
-                                    border: OutlineInputBorder(
-                                      borderSide: BorderSide.none,
-                                      borderRadius: BorderRadius.circular(AppSize.s4),
-                                    ),
-                                    focusColor: ColorManager.lightBlue1,
-                                    filled: true,
-                                    fillColor: ColorManager.lightGrey,
-                                    prefixIcon: searchProvider.searchFocusNode.hasFocus ? Icon(CupertinoIcons.search,color: ColorManager.lightBlue1): Icon(CupertinoIcons.search,color: Colors.red),
-                                    hintText: 'What do you want to learn?',
-                                  ),
-                                  keyboardType: TextInputType.name,
-                                ),
-                              ),
-                            ],
+                              focusColor: ColorManager.lightBlue1,
+                              filled: true,
+                              fillColor: ColorManager.lightGrey,
+                              prefixIcon: searchProvider.searchFocusNode.hasFocus ? Icon(CupertinoIcons.search,color: ColorManager.lightBlue1): Icon(CupertinoIcons.search,color: Colors.red),
+                              hintText: 'What do you want to learn?',
+                            ),
+                            keyboardType: TextInputType.name,
                           ),
+                        ) : Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              AppStringHomePage.headerText,
+                              style: Theme.of(context).textTheme.headline2,
+                            ),
+                            const SizedBox(
+                              height: AppSize.s16,
+                            ),
+                            SizedBox(
+                              width: double.infinity,
+                              height: AppSize.s40,
+                              child: TextFormField(
+                                onTap: (){
+                                  context.read<SearchProvider>().requestFocus(context: context);
+                                },
+                                focusNode: searchProvider.searchFocusNode,
+                                decoration: InputDecoration(
+                                  contentPadding: const EdgeInsets.symmetric(vertical: AppSize.s6),
+                                  border: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius: BorderRadius.circular(AppSize.s4),
+                                  ),
+                                  focusColor: ColorManager.lightBlue1,
+                                  filled: true,
+                                  fillColor: ColorManager.lightGrey,
+                                  prefixIcon: searchProvider.searchFocusNode.hasFocus ? Icon(CupertinoIcons.search,color: ColorManager.lightBlue1): Icon(CupertinoIcons.search,color: Colors.red),
+                                  hintText: 'What do you want to learn?',
+                                ),
+                                keyboardType: TextInputType.name,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                  );
-                },
-              ),
-              SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                      (context,index) => Card(
-                        child: Text('item: ${index +1}'),
-                      ),
-                    childCount: 50
                   ),
-              )
-            ],
-          ),
+                );
+              },
+            ),
+            SliverList(
+                delegate: SliverChildBuilderDelegate(
+                    (context,index) => Card(
+                      child: Text('item: ${index +1}'),
+                    ),
+                  childCount: 50
+                ),
+            )
+          ],
         ),
       ),
     );
