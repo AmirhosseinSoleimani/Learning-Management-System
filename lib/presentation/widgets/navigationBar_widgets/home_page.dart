@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:learning_management_system/presentation/resources/assets_manager.dart';
 import 'package:learning_management_system/presentation/resources/values_manager.dart';
 import 'package:provider/provider.dart';
@@ -15,65 +16,72 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  ScrollController? _scrollController;
-  bool lastStatus = true;
-  double height = 200;
+  ScrollController? scrollController;
 
-  void _scrollListener(){
-    if(_isShrink != lastStatus){
+  bool lastStatus = true;
+
+  bool get isShrink{
+    return scrollController != null && scrollController!.hasClients && scrollController!.offset > (AppSize.s220);
+  }
+
+
+  void scrollListener(){
+    if(isShrink != lastStatus){
       setState(() {
-        lastStatus = _isShrink;
+        lastStatus = isShrink;
       });
     }
   }
 
-  bool get _isShrink{
-    return _scrollController != null && _scrollController!.hasClients && _scrollController!.offset > (220);
-  }
-  
+
+
+
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController()..addListener(_scrollListener);
+    scrollController = ScrollController()..addListener(scrollListener);
   }
 
   @override
   void dispose() {
-    _scrollController?.removeListener(_scrollListener);
-    _scrollController?.dispose();
+    scrollController?.removeListener(scrollListener);
+    scrollController?.dispose();
     super.dispose();
   }
 
 
   @override
   Widget build(BuildContext context) {
+    final searchProvider = Provider.of<SearchProvider>(context);
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: isShrink ? ColorManager.lightBlack1 : ColorManager.black
+      ),
+    );
     print('ggg');
-    GlobalKey<RefreshIndicatorState> refreshKey = GlobalKey<RefreshIndicatorState>();
-    Future onRefresh() async{
-      await Future.delayed(const Duration(seconds: 4));
-    }
     return SafeArea(
       child: Scaffold(
         backgroundColor: ColorManager.black,
         body: CustomScrollView(
-          controller: _scrollController,
+          controller: scrollController,
           physics: const BouncingScrollPhysics(),
           slivers: [
             SliverAppBar(
-              title: _isShrink ? Text(
+              backgroundColor: isShrink ? ColorManager.lightBlack1:ColorManager.black,
+              title: isShrink ? Text(
                   AppStringHomePage.headerText,
                   style: Theme.of(context).textTheme.headline3) :null,
               centerTitle: true,
-              bottom: _isShrink ? PreferredSize(
-                preferredSize: const Size.fromHeight(0),
+              bottom: isShrink ? PreferredSize(
+                preferredSize: const Size.fromHeight(AppSize.s0),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: AppPadding.p12),
+                  padding: const EdgeInsets.symmetric(horizontal: AppPadding.p12,vertical: AppPadding.p12),
                   child: SizedBox(
                     width: double.infinity,
                     height: AppSize.s40,
                     child: TextFormField(
                       onTap: (){
-                        context.read<SearchProvider>().requestFocus(context: context);
+                        // context.read<SearchProvider>().requestFocus(context: context);
                       },
                       // focusNode: searchProvider.searchFocusNode,
                       decoration: InputDecoration(
@@ -85,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                         focusColor: ColorManager.lightBlue1,
                         filled: true,
                         fillColor: ColorManager.lightGrey,
-                        prefixIcon: Icon(CupertinoIcons.search,color: ColorManager.darkWhite),
+                        prefixIcon: Icon(CupertinoIcons.search,color: ColorManager.darkWhite1),
                         hintText: AppStringHomePage.hintSearchBarText,
                         hintStyle: Theme.of(context).textTheme.labelMedium,
                       ),
@@ -97,7 +105,7 @@ class _HomePageState extends State<HomePage> {
               expandedHeight: AppSize.s300,
               stretch: true,
               pinned: true,
-              toolbarHeight: 80,
+              toolbarHeight: AppSize.s80,
               flexibleSpace: Padding(
                 padding: const EdgeInsets.all(AppPadding.p12),
                 child: FlexibleSpaceBar(
@@ -105,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                     StretchMode.zoomBackground
                   ],
                   centerTitle: true,
-                  background: _isShrink ? null:Stack(
+                  background: isShrink ? null:Stack(
                     children: [
                       Container(
                         color: ColorManager.white,
@@ -125,40 +133,18 @@ class _HomePageState extends State<HomePage> {
             Consumer<SearchProvider>(
               builder: (context,searchProvider,child){
                 return SliverAppBar(
-                  pinned: true,
-                  expandedHeight: _isShrink ? 80 : 150,
-                  toolbarHeight: _isShrink ? 80 : 150,
+                  pinned: false,
+                  expandedHeight: isShrink ? AppSize.s0 : AppSize.s120,
+                  toolbarHeight: isShrink ? AppSize.s0 : AppSize.s120,
                   flexibleSpace: Padding(
                     padding: const EdgeInsets.all(AppPadding.p12),
                     child: FlexibleSpaceBar(
                       centerTitle: true,
                       background: Container(
                         width: double.infinity,
-                        height: 120,
-                        color: Colors.green,
-                        child: _isShrink ?  SizedBox(
-                          width: double.infinity,
-                          height: AppSize.s40,
-                          child: TextFormField(
-                            onTap: (){
-                              context.read<SearchProvider>().requestFocus(context: context);
-                            },
-                            focusNode: searchProvider.searchFocusNode,
-                            decoration: InputDecoration(
-                              contentPadding: const EdgeInsets.symmetric(vertical: AppSize.s6),
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius: BorderRadius.circular(AppSize.s4),
-                              ),
-                              focusColor: ColorManager.lightBlue1,
-                              filled: true,
-                              fillColor: ColorManager.lightGrey,
-                              prefixIcon: searchProvider.searchFocusNode.hasFocus ? Icon(CupertinoIcons.search,color: ColorManager.lightBlue1): Icon(CupertinoIcons.search,color: Colors.red),
-                              hintText: 'What do you want to learn?',
-                            ),
-                            keyboardType: TextInputType.name,
-                          ),
-                        ) : Column(
+                        height: AppSize.s120,
+                        color: ColorManager.black,
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
@@ -182,11 +168,12 @@ class _HomePageState extends State<HomePage> {
                                     borderSide: BorderSide.none,
                                     borderRadius: BorderRadius.circular(AppSize.s4),
                                   ),
-                                  focusColor: ColorManager.lightBlue1,
+                                  focusColor: ColorManager.darkGrey,
                                   filled: true,
                                   fillColor: ColorManager.lightGrey,
-                                  prefixIcon: searchProvider.searchFocusNode.hasFocus ? Icon(CupertinoIcons.search,color: ColorManager.lightBlue1): Icon(CupertinoIcons.search,color: Colors.red),
-                                  hintText: 'What do you want to learn?',
+                                  prefixIcon: Icon(CupertinoIcons.search,color: ColorManager.darkWhite1),
+                                  hintText: AppStringHomePage.hintSearchBarText,
+                                  hintStyle: Theme.of(context).textTheme.labelMedium,
                                 ),
                                 keyboardType: TextInputType.name,
                               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:learning_management_system/presentation/resources/values_manager.dart';
 
 class SearchProvider with ChangeNotifier{
 
@@ -10,4 +11,21 @@ class SearchProvider with ChangeNotifier{
       FocusScope.of(context).requestFocus(searchFocusNode);
       notifyListeners();
   }
+
+  ScrollController? scrollController;
+
+  bool lastStatus = true;
+
+  bool get isShrink{
+    return scrollController != null && scrollController!.hasClients && scrollController!.offset > (AppSize.s220);
+  }
+
+
+  void scrollListener(){
+    if(isShrink != lastStatus){
+        lastStatus = isShrink;
+        notifyListeners();
+    }
+  }
+
 }
