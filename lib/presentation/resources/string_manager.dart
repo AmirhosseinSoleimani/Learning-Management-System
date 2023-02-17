@@ -16,6 +16,8 @@ class AppStringNoRouteFound{
 class AppStringHomePage{
   static const String headerText = 'Explore';
   static const String hintSearchBarText = 'What do you want to learn?';
+  static const String categoriesText = 'Categories';
+  static const String seeAllText = 'See All';
 
 }
 
