@@ -9,9 +9,9 @@ import '../../../presentation/widgets/widgets.dart';
 
 class NavigationBarProvider with ChangeNotifier{
   final List<BottomNavigationBarItem> _bottomNavigationBarItems = [
-    customNavigationBar(color: ColorManager.lightGrey, activeColor: ColorManager.lightBlue1, iconSize: AppSize.s30, labelText: AppStringNavigationBar.explore, icon: CupertinoIcons.search, activeIcon: CupertinoIcons.search),
-    customNavigationBar(color: ColorManager.lightGrey, activeColor: ColorManager.lightBlue1, iconSize: AppSize.s30, labelText: AppStringNavigationBar.myLearning, icon: CupertinoIcons.play_circle, activeIcon: CupertinoIcons.play_circle),
-    customNavigationBar(color: ColorManager.lightGrey, activeColor: ColorManager.lightBlue1, iconSize: AppSize.s30,labelText: AppStringNavigationBar.account, icon: CupertinoIcons.person_alt_circle, activeIcon: CupertinoIcons.person_alt_circle),
+    customNavigationBar(color: ColorManager.lightGrey, activeColor: ColorManager.lightBlue1, iconSize: AppSize.s28, labelText: AppStringNavigationBar.explore, icon: CupertinoIcons.search, activeIcon: CupertinoIcons.search),
+    customNavigationBar(color: ColorManager.lightGrey, activeColor: ColorManager.lightBlue1, iconSize: AppSize.s28, labelText: AppStringNavigationBar.myLearning, icon: CupertinoIcons.play_circle, activeIcon: CupertinoIcons.play_circle),
+    customNavigationBar(color: ColorManager.lightGrey, activeColor: ColorManager.lightBlue1, iconSize: AppSize.s28,labelText: AppStringNavigationBar.account, icon: CupertinoIcons.person_alt_circle, activeIcon: CupertinoIcons.person_alt_circle),
   ];
 
   List<BottomNavigationBarItem> get bottomNavigationBarItems => _bottomNavigationBarItems;

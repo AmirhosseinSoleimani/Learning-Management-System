@@ -23,7 +23,7 @@ class AppStringHomePage{
 // SignUp
 class AppStringSignUp{
   static const String headerText = 'Sign Up to Learning Management System';
-  static const String signInButtonText = 'Get Sign in';
-  static const String signUpButtonText = 'Get Sign up';
+  static const String signInButtonText = 'Sign in';
+  static const String signUpButtonText = 'Sign up';
 
 }
