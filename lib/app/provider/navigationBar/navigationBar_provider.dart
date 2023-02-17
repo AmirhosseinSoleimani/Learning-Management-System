@@ -3,7 +3,7 @@ import '../../../presentation/resources/color_manager.dart';
 import '../../../presentation/resources/string_manager.dart';
 import '../../../presentation/resources/values_manager.dart';
 import '../../../presentation/widgets/navigationBar_widgets/account.dart';
-import '../../../presentation/widgets/navigationBar_widgets/home_page.dart';
+import '../../../presentation/widgets/navigationBar_widgets/home_page/screens/home_page.dart';
 import '../../../presentation/widgets/navigationBar_widgets/my_learning.dart';
 import '../../../presentation/widgets/widgets.dart';
 

@@ -4,10 +4,11 @@ import 'package:flutter/services.dart';
 import 'package:learning_management_system/presentation/resources/assets_manager.dart';
 import 'package:learning_management_system/presentation/resources/values_manager.dart';
 import 'package:provider/provider.dart';
-import '../../../app/provider/search/search_provider.dart';
-import '../../resources/color_manager.dart';
-import '../../resources/string_manager.dart';
-import '../widgets.dart';
+import '../../../../../app/provider/search/search_provider.dart';
+import '../../../../resources/color_manager.dart';
+import '../../../../resources/string_manager.dart';
+import '../../../widgets.dart';
+import '../widgets/categories_section.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -180,35 +181,7 @@ class _HomePageState extends State<HomePage> {
                   SliverList(
                       delegate: SliverChildListDelegate(
                         [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: AppPadding.p12),
-                            child: SizedBox(
-                              height: 100,
-                              width: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        AppStringHomePage.categoriesText,
-                                        style: Theme.of(context).textTheme.headline2,
-                                      ),
-                                      TextButton(
-                                          onPressed: (){},
-                                          child: Text(
-                                            AppStringHomePage.seeAllText,
-                                            style: Theme.of(context).textTheme.subtitle1,
-                                          ),
-                                      ),
-                                    ],
-                                  ),
-
-                                ],
-                              ),
-                            ),
-                          ),
+                          const CategoriesSection(),
                           Container(
                             height: 200,
                             width: double.infinity,
