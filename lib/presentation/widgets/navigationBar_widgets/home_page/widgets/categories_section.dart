@@ -10,9 +10,9 @@ class CategoriesSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppPadding.p12,vertical: AppPadding.p8),
+      padding: const EdgeInsets.all(AppPadding.p12),
       child: SizedBox(
-        height: AppSize.s150,
+        height: AppSize.s100,
         width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,7 +52,7 @@ class CategoriesSection extends StatelessWidget {
                       ),
                       label: Text(
                           categoriesList[index],
-                          style: Theme.of(context).textTheme.button,
+                          style: Theme.of(context).textTheme.bodyText1,
                       ),
                     ),
                   ),

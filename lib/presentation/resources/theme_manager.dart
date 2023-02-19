@@ -7,13 +7,14 @@ ThemeData getApplicationTheme(){
   return ThemeData(
     textTheme: TextTheme(
       headline1: getBoldStyle(fontSize: AppSize.s40, color: ColorManager.black),
-      headline2: getSemiBoldStyle(fontSize: AppSize.s24, color: ColorManager.darkWhite1),
+      headline2: getSemiBoldStyle(fontSize: AppSize.s20, color: ColorManager.darkWhite1),
       headline3: getRegularStyle(fontSize: AppSize.s18, color: ColorManager.white),
+      headline4: getRegularStyle(fontSize: AppSize.s16, color: ColorManager.white),
       labelMedium: getRegularStyle(fontSize: AppSize.s14, color: ColorManager.darkWhite1),
       bodyText1: getRegularStyle(fontSize: AppSize.s14, color: ColorManager.white),
       bodyText2: getRegularStyle(fontSize: AppSize.s14, color: ColorManager.black),
       subtitle1: getSemiBoldStyle(fontSize: AppSize.s14, color: ColorManager.lightPurple),
-      button: getSemiBoldStyle(fontSize: AppSize.s16, color: ColorManager.white),
+      button: getSemiBoldStyle(fontSize: AppSize.s16, color: ColorManager.black),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       selectedLabelStyle: getRegularStyle(fontSize: AppSize.s14, color: ColorManager.lightBlue1),

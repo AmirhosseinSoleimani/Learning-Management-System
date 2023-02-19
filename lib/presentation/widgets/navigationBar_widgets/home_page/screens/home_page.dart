@@ -18,18 +18,32 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  ScrollController? scrollController;
+  bool lastStatus = true;
+
+  bool get isShrink{
+    return scrollController != null && scrollController!.hasClients && scrollController!.offset > (260);
+  }
+
+  void scrollListener(){
+    if(isShrink != lastStatus){
+      setState(() {
+        lastStatus = isShrink;
+      });
+    }
+  }
+
   @override
   void initState() {
     super.initState();
-    Provider.of<SearchProvider>(context, listen: false).scrollController = ScrollController()..addListener(
-          Provider.of<SearchProvider>(context, listen: false).scrollListener);
+    scrollController = ScrollController()..addListener(scrollListener);
   }
 
   @override
   void dispose() {
-    Provider.of<SearchProvider>(context, listen: false).scrollController?.removeListener(
-        Provider.of<SearchProvider>(context, listen: false).scrollListener);
-    Provider.of<SearchProvider>(context, listen: false).scrollController?.dispose();
+    scrollController?.removeListener(scrollListener);
+    scrollController?.dispose();
     super.dispose();
   }
 
@@ -37,123 +51,81 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final searchProvider = Provider.of<SearchProvider>(context);
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: searchProvider.isShrink ? ColorManager.lightBlack1 : ColorManager.black),
+      SystemUiOverlayStyle(statusBarColor: isShrink ? ColorManager.lightBlack1 : ColorManager.black),
     );
     print('ggg');
     return SafeArea(
       child: Scaffold(
         backgroundColor: ColorManager.black,
         body:
-        Consumer<SearchProvider>(builder: (context, searchProvider, child) {
-              return CustomScrollView(
-                controller: searchProvider.scrollController,
-                physics: const BouncingScrollPhysics(),
-                slivers: [
-                  SliverAppBar(
-                    backgroundColor: searchProvider.isShrink ? ColorManager.lightBlack1 : ColorManager.black,
-                    title: searchProvider.isShrink ? Text(AppStringHomePage.headerText,
-                        style: Theme.of(context).textTheme.headline3,
-                    ) : null,
-                    centerTitle: true,
-                    bottom: searchProvider.isShrink ?
-                    PreferredSize(
-                      preferredSize: const Size.fromHeight(AppSize.s0),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                              horizontal: AppPadding.p12,
-                              vertical: AppPadding.p12),
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: AppSize.s40,
-                            child: TextFormField(
-                              onTap: () {
-                                // context.read<SearchProvider>().requestFocus(context: context);
-                              },
-                              // focusNode: searchProvider.searchFocusNode,
-                              decoration: InputDecoration(
-                                contentPadding: const EdgeInsets.symmetric(
-                                    vertical: AppSize.s6),
-                                border: OutlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                  borderRadius:
-                                      BorderRadius.circular(AppSize.s4),
-                                ),
-                                focusColor: ColorManager.lightBlue1,
-                                filled: true,
-                                fillColor: ColorManager.lightGrey,
-                                prefixIcon: Icon(CupertinoIcons.search,
-                                    color: ColorManager.darkWhite1),
-                                hintText: AppStringHomePage.hintSearchBarText,
-                                hintStyle:
-                                    Theme.of(context).textTheme.labelMedium,
-                              ),
-                              keyboardType: TextInputType.name,
-                            ),
+        CustomScrollView(
+          controller: scrollController,
+          physics: const BouncingScrollPhysics(),
+          slivers: [
+            SliverAppBar(
+              backgroundColor: isShrink ? ColorManager.lightBlack1 : ColorManager.black,
+              toolbarHeight: 0,
+              expandedHeight: AppSize.s250,
+              flexibleSpace: Padding(
+                padding: const EdgeInsets.all(AppPadding.p12),
+                child: FlexibleSpaceBar(
+                  stretchModes: const [StretchMode.zoomBackground],
+                  centerTitle: true,
+                  background: isShrink ? null :
+                  Stack(
+                    children: [
+                      Container(
+                        color: ColorManager.white,
+                      ),
+                      const Positioned.fill(
+                        child: Image(
+                          image: AssetImage(
+                            ImageManagerAssets.headerHomePage,
                           ),
                         ),
-                      ) : null,
-                    expandedHeight: AppSize.s250,
-                    stretch: true,
-                    pinned: true,
-                    toolbarHeight: AppSize.s80,
-                    flexibleSpace: Padding(
-                      padding: const EdgeInsets.all(AppPadding.p12),
-                      child: FlexibleSpaceBar(
-                        stretchModes: const [StretchMode.zoomBackground],
-                        centerTitle: true,
-                        background: searchProvider.isShrink ? null :
-                        Stack(
-                          children: [
-                              Container(
-                                color: ColorManager.white,
-                              ),
-                              const Positioned.fill(
-                                child: Image(
-                                  image: AssetImage(
-                                    ImageManagerAssets.headerHomePage,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                      ),
+                    ],
                   ),
                 ),
               ),
-                  SliverAppBar(
-                    pinned: false,
-                    expandedHeight:
-                    searchProvider.isShrink ? AppSize.s0 : AppSize.s120,
-                    toolbarHeight:
-                    searchProvider.isShrink ? AppSize.s0 : AppSize.s120,
-                    flexibleSpace: Padding(
-                      padding: const EdgeInsets.all(AppPadding.p12),
-                      child: FlexibleSpaceBar(
-                        centerTitle: true,
-                        background: Container(
-                          width: double.infinity,
-                          height: AppSize.s120,
-                          color: ColorManager.black,
+            ),
+            SliverAppBar(
+              backgroundColor: isShrink ? ColorManager.lightBlack1 : ColorManager.black,
+              toolbarHeight: AppSize.s120,
+              pinned: true,
+              flexibleSpace: Padding(
+                padding: const EdgeInsets.all(AppPadding.p12),
+                child: FlexibleSpaceBar(
+                  centerTitle: true,
+                  background: Stack(
+                    children: [
+                      AnimatedPositioned(
+                        duration: const Duration(seconds: 1),
+                        left: isShrink ? (MediaQuery.of(context).size.width / 2 - 44.5) : 0,
+                        child: Text(
+                          AppStringHomePage.headerText,
+                          style: Theme.of(context).textTheme.headline2,
+                        ),
+                      ),
+                      Positioned(
+                        top: 45,
+                        left: 0,
+                        child: SizedBox(
+                            width: (MediaQuery.of(context).size.width - 24),
+                            height: 175,
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                AppStringHomePage.headerText,
-                                style: Theme.of(context).textTheme.headline2,
-                              ),
-                              const SizedBox(
-                                height: AppSize.s16,
-                              ),
                               SizedBox(
-                                width: double.infinity,
+                                width: (MediaQuery.of(context).size.width - 24),
                                 height: AppSize.s40,
                                 child: TextFormField(
                                   onTap: () {
                                     context.read<SearchProvider>().requestFocus(context: context);
-                                    },
+                                  },
                                   focusNode: searchProvider.searchFocusNode,
                                   decoration: InputDecoration(
                                     contentPadding: const EdgeInsets.symmetric(
-                                    vertical: AppSize.s6,
+                                      vertical: AppSize.s6,
                                     ),
                                     border: OutlineInputBorder(
                                       borderSide: BorderSide.none,
@@ -164,7 +136,7 @@ class _HomePageState extends State<HomePage> {
                                     filled: true,
                                     fillColor: ColorManager.lightGrey,
                                     prefixIcon: Icon(CupertinoIcons.search,
-                                    color: ColorManager.darkWhite1,
+                                      color: ColorManager.darkWhite1,
                                     ),
                                     hintText: AppStringHomePage.hintSearchBarText,
                                     hintStyle: Theme.of(context).textTheme.labelMedium,
@@ -172,32 +144,68 @@ class _HomePageState extends State<HomePage> {
                                   keyboardType: TextInputType.name,
                                 ),
                               ),
+                              AnimatedOpacity(
+                                duration: const Duration(seconds: 2),
+                                opacity: isShrink ? 1.0 : 0.0,
+                                child: const SizedBox(
+                                  height: 5.0,
+                                ),
+                              ),
+                              AnimatedOpacity(
+                                duration: const Duration(seconds: 2),
+                                opacity: isShrink ? 1.0 : 0.0,
+                                child: SizedBox(
+                                  height: 5,
+                                  child: Divider(
+                                    thickness: 1,
+                                    color: ColorManager.darkWhite1,
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ),
                       ),
+
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            SliverList(
+              delegate: SliverChildListDelegate(
+                  [
+                    const CategoriesSection(),
+                    Container(
+                      height: 200,
+                      width: double.infinity,
+                      color: Colors.green,
                     ),
-                  ),
-                  SliverList(
-                      delegate: SliverChildListDelegate(
-                        [
-                          const CategoriesSection(),
-                          Container(
-                            height: 200,
-                            width: double.infinity,
-                            color: Colors.green,
-                          ),
-                          Container(
-                            height: 200,
-                            width: double.infinity,
-                            color: Colors.blue,
-                          )
-                        ]
-                      ),
-                  ),
-                ],
-              );
-            }),
+                    Container(
+                      height: 200,
+                      width: double.infinity,
+                      color: Colors.blue,
+                    ),
+                    Container(
+                      height: 200,
+                      width: double.infinity,
+                      color: Colors.blue,
+                    ),
+                    Container(
+                      height: 200,
+                      width: double.infinity,
+                      color: Colors.blue,
+                    ),
+                    Container(
+                      height: 200,
+                      width: double.infinity,
+                      color: Colors.blue,
+                    ),
+                  ]
+              ),
+            ),
+          ],
+        ),
         bottomNavigationBar: signInElevatedButton(onPressed: (){}, context: context),
       ),
     );

@@ -17,7 +17,7 @@ class SearchProvider with ChangeNotifier{
   bool lastStatus = true;
 
   bool get isShrink{
-    return scrollController != null && scrollController!.hasClients && scrollController!.offset > (AppSize.s190);
+    return scrollController != null && scrollController!.hasClients && scrollController!.offset > (AppSize.s170);
   }
 
 
