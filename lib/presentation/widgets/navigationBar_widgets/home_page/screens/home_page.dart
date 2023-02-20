@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   bool lastStatus = true;
 
   bool get isShrink{
-    return scrollController != null && scrollController!.hasClients && scrollController!.offset > (260);
+    return scrollController != null && scrollController!.hasClients && scrollController!.offset > (AppSize.s260);
   }
 
   void scrollListener(){
@@ -53,7 +53,6 @@ class _HomePageState extends State<HomePage> {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: isShrink ? ColorManager.lightBlack1 : ColorManager.black),
     );
-    print('ggg');
     return SafeArea(
       child: Scaffold(
         backgroundColor: ColorManager.black,
@@ -63,8 +62,10 @@ class _HomePageState extends State<HomePage> {
           physics: const BouncingScrollPhysics(),
           slivers: [
             SliverAppBar(
+              stretch: true,
+              pinned: true,
               backgroundColor: isShrink ? ColorManager.lightBlack1 : ColorManager.black,
-              toolbarHeight: 0,
+              toolbarHeight: AppSize.s0,
               expandedHeight: AppSize.s250,
               flexibleSpace: Padding(
                 padding: const EdgeInsets.all(AppPadding.p12),
@@ -100,23 +101,23 @@ class _HomePageState extends State<HomePage> {
                   background: Stack(
                     children: [
                       AnimatedPositioned(
-                        duration: const Duration(seconds: 1),
-                        left: isShrink ? (MediaQuery.of(context).size.width / 2 - 44.5) : 0,
+                        duration: const Duration(milliseconds: DurationConstant.d2000),
+                        left: isShrink ? (MediaQuery.of(context).size.width / 2 - 44.5) : AppSize.s0,
                         child: Text(
                           AppStringHomePage.headerText,
                           style: Theme.of(context).textTheme.headline2,
                         ),
                       ),
                       Positioned(
-                        top: 45,
-                        left: 0,
+                        top: AppSize.s45,
+                        left: AppSize.s0,
                         child: SizedBox(
-                            width: (MediaQuery.of(context).size.width - 24),
-                            height: 175,
+                            width: (MediaQuery.of(context).size.width - AppPadding.p24),
+                            height: AppSize.s175,
                           child: Column(
                             children: [
                               SizedBox(
-                                width: (MediaQuery.of(context).size.width - 24),
+                                width: (MediaQuery.of(context).size.width - AppPadding.p24),
                                 height: AppSize.s40,
                                 child: TextFormField(
                                   onTap: () {
@@ -145,19 +146,19 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               AnimatedOpacity(
-                                duration: const Duration(seconds: 2),
-                                opacity: isShrink ? 1.0 : 0.0,
+                                duration: const Duration(milliseconds: DurationConstant.d2000),
+                                opacity: isShrink ? AppSize.s1 : AppSize.s0,
                                 child: const SizedBox(
-                                  height: 5.0,
+                                  height: AppSize.s8,
                                 ),
                               ),
                               AnimatedOpacity(
-                                duration: const Duration(seconds: 2),
-                                opacity: isShrink ? 1.0 : 0.0,
+                                duration: const Duration(milliseconds: DurationConstant.d2000),
+                                opacity: isShrink ? AppSize.s1 : AppSize.s0,
                                 child: SizedBox(
-                                  height: 5,
+                                  height: AppSize.s4,
                                   child: Divider(
-                                    thickness: 1,
+                                    thickness: AppSize.s1,
                                     color: ColorManager.darkWhite1,
                                   ),
                                 ),
