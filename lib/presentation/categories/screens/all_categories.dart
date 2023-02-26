@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../widgets/widgets.dart';
+
 class AllCategories extends StatelessWidget {
   const AllCategories({Key? key}) : super(key: key);
 
@@ -8,6 +10,7 @@ class AllCategories extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
+        leading: arrowBackButton(context: context),
       ),
     );
   }

@@ -31,9 +31,9 @@ class RouteGenerator{
       case Routes.splash:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case Routes.navigationBar:
-        return MaterialPageRoute(builder: (_) => const NavigationBarScreen());
+        return CustomPageRoute(child: const NavigationBarScreen());
       case Routes.allCategories:
-        return MaterialPageRoute(builder: (_) => const AllCategories());
+        return CustomPageRoute(child: const AllCategories());
       case Routes.signUp:
         return CustomPageRoute(child: const SignUpScreen());
       default:

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learning_management_system/presentation/resources/color_manager.dart';
+import 'package:learning_management_system/presentation/resources/route_manager.dart';
 import '../../../../constants/categories_list.dart';
 import '../../../../resources/string_manager.dart';
 import '../../../../resources/values_manager.dart';
@@ -25,7 +26,9 @@ class CategoriesSection extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline2,
                 ),
                 TextButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.pushNamed(context, Routes.allCategories);
+                  },
                   child: Text(
                     AppStringHomePage.seeAllText,
                     style: Theme.of(context).textTheme.subtitle1,

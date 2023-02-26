@@ -188,7 +188,6 @@ class _HomePageState extends State<HomePage> {
                     const CategoriesSection(),
                     InkWell(
                       onTap: (){
-                        Navigator.pushNamed(context, Routes.allCourse);
                       },
                       child: Container(
                         height: 200,

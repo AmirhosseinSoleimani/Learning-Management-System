@@ -71,3 +71,14 @@ Widget signInElevatedButton({required Function onPressed, required BuildContext 
       ),
   );
 }
+
+Widget arrowBackButton({required BuildContext context}){
+  return IconButton(
+      onPressed: () => Navigator.of(context).pop(),
+      icon: Icon(
+          Icons.arrow_back_ios_rounded,
+          color: ColorManager.white,
+          size: AppSize.s20,
+      ),
+  );
+}
