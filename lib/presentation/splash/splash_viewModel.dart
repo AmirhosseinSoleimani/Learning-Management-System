@@ -2,6 +2,7 @@ import 'dart:async';
 import '../base/base_viewModel.dart';
 import 'package:flutter/material.dart';
 import '../resources/route_manager.dart';
+import '../resources/values_manager.dart';
 
 class SplashViewModel extends BaseViewModel with SplashInputs,SplashOutputs {
 
@@ -29,7 +30,7 @@ class SplashViewModel extends BaseViewModel with SplashInputs,SplashOutputs {
   @override
   startDelay(BuildContext context) {
     _timer = Timer(
-        const Duration(seconds: 6),
+        const Duration(milliseconds: DurationConstant.d6000),
             () {
           goNext(context);
         });

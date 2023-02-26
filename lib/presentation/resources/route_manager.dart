@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learning_management_system/presentation/authentication/sign_up/sign_up_screen.dart';
+import 'package:learning_management_system/presentation/categories/screens/all_categories.dart';
 import 'package:learning_management_system/presentation/resources/string_manager.dart';
 import 'package:learning_management_system/presentation/splash/splash.dart';
 import '../bottom_navigationBar/navigationBar_screen.dart';
@@ -15,8 +16,11 @@ class Routes{
   // Authentication
   static const String signUp = '/signUp';
 
-  // Authentication
-  static const String allCourse = '/all_course';
+  // All Courses
+  static const String allCourses = '/all_courses';
+
+  // All Categories
+  static const String allCategories = '/all_categories';
 
 }
 
@@ -28,6 +32,8 @@ class RouteGenerator{
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case Routes.navigationBar:
         return MaterialPageRoute(builder: (_) => const NavigationBarScreen());
+      case Routes.allCategories:
+        return MaterialPageRoute(builder: (_) => const AllCategories());
       case Routes.signUp:
         return CustomPageRoute(child: const SignUpScreen());
       default:

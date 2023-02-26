@@ -29,3 +29,8 @@ class AppStringSignUp{
   static const String signUpButtonText = 'Sign up';
 
 }
+
+// Splash String
+class AppStringSplash{
+  static const String epent = 'Epent';
+}
