@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 
 abstract class BaseViewModel extends BaseViewModelInputs
     with BaseViewModelOutputs{
@@ -6,7 +7,7 @@ abstract class BaseViewModel extends BaseViewModelInputs
 }
 
 abstract class BaseViewModelInputs{
-  void start(); // will be called wile init of view model
+  void start(BuildContext context); // will be called wile init of view model
   void dispose(); // will be called when viewModel dies.
 }
 
