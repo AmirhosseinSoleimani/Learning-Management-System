@@ -83,7 +83,7 @@ Widget arrowBackButton({required BuildContext context}){
   );
 }
 
-Widget svgPicture({required String svgPictureAddress,required Color color,double width = 30,double height = 30}){
+Widget svgPicture({required String svgPictureAddress,Color color = Colors.white,double width = 30,double height = 30}){
   return SizedBox(
     width: width,
     height: height,
