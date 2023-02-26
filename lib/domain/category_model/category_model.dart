@@ -1,25 +1,31 @@
+import 'package:flutter/cupertino.dart';
+
 class CategoryModel{
   String? id;
   String? name;
-  String? picture;
+  Widget? svgPicture;
+  Function? onTap;
 
   CategoryModel({
     this.id,
     this.name,
-    this.picture,
+    this.svgPicture,
+    this.onTap
   });
 
   CategoryModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
-    picture = json['picture'];
+    svgPicture = json['picture'];
+    onTap = json['onTap'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['name'] = name;
-    data['picture'] = picture;
+    data['picture'] = svgPicture;
+    data['onTap'] = onTap;
     return data;
   }
 }
