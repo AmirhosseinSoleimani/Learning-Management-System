@@ -94,18 +94,23 @@ class _AllCategoriesState extends State<AllCategories> {
                           shrinkWrap: true,
                           physics: const BouncingScrollPhysics(),
                           itemCount: categoriesList.length,
-                          itemBuilder: (context,index) => ListTile(
-                            title: Text(
-                                categoriesList[index].name!,
-                                style: Theme.of(context).textTheme.headline4,
-                            ),
-                            leading: categoriesList[index].svgPicture,
-                            trailing: IconButton(
-                              onPressed: (){},
-                              icon: Icon(
-                                Icons.arrow_forward_ios_rounded,
-                                size: AppSize.s20,
-                                color: ColorManager.white,),
+                          itemBuilder: (context,index) => GestureDetector(
+                            onTap: (){
+                              debugPrint(categoriesList[index].name!);
+                            },
+                            child: ListTile(
+                              title: Text(
+                                  categoriesList[index].name!,
+                                  style: Theme.of(context).textTheme.headline4,
+                              ),
+                              leading: categoriesList[index].svgPicture,
+                              trailing: IconButton(
+                                onPressed: (){},
+                                icon: Icon(
+                                  Icons.arrow_forward_ios_rounded,
+                                  size: AppSize.s20,
+                                  color: ColorManager.white,),
+                              ),
                             ),
                           ),
                       ),
