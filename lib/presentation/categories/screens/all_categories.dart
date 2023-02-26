@@ -4,7 +4,6 @@ import '../../constants/categories_list.dart';
 import '../../resources/string_manager.dart';
 import '../../resources/values_manager.dart';
 import '../../widgets/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 
 class AllCategories extends StatefulWidget {
@@ -91,8 +90,9 @@ class _AllCategoriesState extends State<AllCategories> {
                   [
                     SizedBox(
                       width: double.infinity,
-                      height: 500,
                       child: ListView.builder(
+                          shrinkWrap: true,
+                          physics: const BouncingScrollPhysics(),
                           itemCount: categoriesList.length,
                           itemBuilder: (context,index) => ListTile(
                             title: Text(
@@ -100,6 +100,13 @@ class _AllCategoriesState extends State<AllCategories> {
                                 style: Theme.of(context).textTheme.headline4,
                             ),
                             leading: categoriesList[index].svgPicture,
+                            trailing: IconButton(
+                              onPressed: (){},
+                              icon: Icon(
+                                Icons.arrow_forward_ios_rounded,
+                                size: AppSize.s20,
+                                color: ColorManager.white,),
+                            ),
                           ),
                       ),
                     )
