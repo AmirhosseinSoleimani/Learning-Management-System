@@ -10,6 +10,7 @@ ThemeData getApplicationTheme(){
       headline2: getSemiBoldStyle(fontSize: AppSize.s20, color: ColorManager.darkWhite1),
       headline3: getRegularStyle(fontSize: AppSize.s18, color: ColorManager.white),
       headline4: getRegularStyle(fontSize: AppSize.s16, color: ColorManager.white),
+      headline5: getSemiBoldStyle(fontSize: AppSize.s24, color: ColorManager.darkWhite1),
       labelMedium: getRegularStyle(fontSize: AppSize.s14, color: ColorManager.darkWhite1),
       bodyText1: getRegularStyle(fontSize: AppSize.s14, color: ColorManager.white),
       bodyText2: getRegularStyle(fontSize: AppSize.s14, color: ColorManager.black),

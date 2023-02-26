@@ -4,10 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:learning_management_system/presentation/resources/assets_manager.dart';
 import 'package:learning_management_system/presentation/resources/values_manager.dart';
 import 'package:provider/provider.dart';
-import '../../../../../app/provider/navigationBar/navigationBar_provider.dart';
 import '../../../../../app/provider/search/search_provider.dart';
 import '../../../../resources/color_manager.dart';
-import '../../../../resources/route_manager.dart';
 import '../../../../resources/string_manager.dart';
 import '../../../widgets.dart';
 import '../widgets/categories_section.dart';
@@ -17,10 +15,7 @@ class HomePage extends StatefulWidget {
 
 
   @override
-  State<HomePage> createState(){
-    print('createState');
-   return _HomePageState();
-  }
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
@@ -43,7 +38,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    print('initState');
     super.initState();
     scrollController = ScrollController()..addListener(scrollListener);
   }
@@ -57,7 +51,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    print('build');
     final searchProvider = Provider.of<SearchProvider>(context);
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: isShrink ? ColorManager.lightBlack1 : ColorManager.black),
