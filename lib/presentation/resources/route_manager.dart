@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:learning_management_system/presentation/authentication/sign_up/sign_up_screen.dart';
 import 'package:learning_management_system/presentation/resources/string_manager.dart';
 import '../bottom_navigationBar/navigationBar_screen.dart';
+import '../courses.dart';
 
 class Routes{
 
@@ -10,6 +11,9 @@ class Routes{
 
   // Authentication
   static const String signUp = '/signUp';
+
+  // Authentication
+  static const String allCourse = '/all_course';
 
 }
 
