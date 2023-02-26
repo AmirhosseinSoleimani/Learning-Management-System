@@ -1,9 +1,8 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:learning_management_system/presentation/resources/assets_manager.dart';
 import 'package:learning_management_system/presentation/resources/color_manager.dart';
-import 'package:learning_management_system/presentation/resources/route_manager.dart';
 import 'package:learning_management_system/presentation/resources/values_manager.dart';
+import 'package:learning_management_system/presentation/splash/splash_viewModel.dart';
 import '../resources/style_manager.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -14,36 +13,26 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  bool isLoading = false;
-  _getLoading() async{
-    Future.delayed(const Duration(milliseconds: 100),(){
-      setState(() {
-        isLoading = true;
-      });
-    });
+  final SplashViewModel _splashViewModel = SplashViewModel();
+
+  _bindStart(){
+    _splashViewModel.start(context);
   }
 
-  Timer? _timer;
-
-  _startDelay(){
-    _timer = Timer(const Duration(seconds: 6),_goNext);
-  }
-
-  _goNext(){
-    Navigator.popAndPushNamed(context, Routes.navigationBar);
+  _bindDispose(){
+    _splashViewModel.dispose();
   }
 
   @override
   void initState() {
-    _getLoading();
-    _startDelay();
+    _bindStart();
     super.initState();
   }
 
   @override
   void dispose() {
     super.dispose();
-    _timer!.cancel();
+    _bindDispose();
   }
 
   @override
@@ -61,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   alignment: Alignment.center,
                   child: AnimatedOpacity(
                     duration: const Duration(seconds: 1),
-                    opacity: isLoading ? 1.0 : 0.0,
+                    opacity: _splashViewModel.isLoading ? 1.0 : 0.0,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -90,13 +79,13 @@ class _SplashScreenState extends State<SplashScreen> {
                   ),
                 ),
                 AnimatedPositioned(
-                  top: isLoading ? 65 : 0,
+                  top: _splashViewModel.isLoading ? 65 : 0,
                   left: -9,
                   curve: Curves.easeIn,
                   duration: const Duration(seconds: 2),
                   child: AnimatedOpacity(
                     duration: const Duration(seconds: 1),
-                    opacity: isLoading ? 1.0 : 0.0,
+                    opacity: _splashViewModel.isLoading ? 1.0 : 0.0,
                     child: Icon(
                       Icons.keyboard_arrow_up_rounded,
                       color: ColorManager.darkPurple,
@@ -109,7 +98,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   top: 150,
                   child: AnimatedOpacity(
                     duration: const Duration(seconds: 4),
-                    opacity: isLoading ? 1.0 : 0.0,
+                    opacity: _splashViewModel.isLoading ? 1.0 : 0.0,
                     child: const Image(
                       image: AssetImage(
                         ImageManagerAssets.splash,

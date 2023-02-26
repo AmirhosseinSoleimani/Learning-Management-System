@@ -3,7 +3,7 @@ import '../base/base_viewModel.dart';
 import 'package:flutter/material.dart';
 import '../resources/route_manager.dart';
 
-class OnBoardingViewModel extends BaseViewModel with SplashInputs,SplashOutputs {
+class SplashViewModel extends BaseViewModel with SplashInputs,SplashOutputs {
 
   bool isLoading = false;
   Timer? _timer;
