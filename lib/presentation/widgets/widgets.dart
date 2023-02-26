@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:learning_management_system/presentation/resources/values_manager.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import '../resources/color_manager.dart';
 import '../resources/string_manager.dart';
 
@@ -80,5 +80,16 @@ Widget arrowBackButton({required BuildContext context}){
           color: ColorManager.white,
           size: AppSize.s20,
       ),
+  );
+}
+
+Widget svgPicture({required String svgPictureAddress,required Color color,double width = 30,double height = 30}){
+  return SizedBox(
+    width: width,
+    height: height,
+    child: SvgPicture.asset(
+        svgPictureAddress,
+        color: color,
+    ),
   );
 }

@@ -1,23 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:learning_management_system/presentation/resources/color_manager.dart';
-
 import '../../domain/category_model/category_model.dart';
 import '../resources/assets_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-// const List<String> categoriesList = [
-//   'Development',
-//   'Finance &  Accounting',
-//   'Office Productivity',
-//   'Business',
-//   'IT & Software',
-//   'Design',
-//   'Marketing',
-//   'Lifestyle',
-//   'Music',
-//   'Health & Fitness',
-//   'Teaching & Academics',
-// ];
 
 List<CategoryModel> categoriesList = [
   CategoryModel(name: 'Development',svgPicture: SizedBox(width: 30, height: 30, child: SvgPicture.asset(IconManagerAssets.development,))),
