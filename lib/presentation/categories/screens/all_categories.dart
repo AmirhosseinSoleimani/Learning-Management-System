@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../resources/color_manager.dart';
 import '../../resources/string_manager.dart';
 import '../../resources/values_manager.dart';
 import '../../widgets/widgets.dart';
