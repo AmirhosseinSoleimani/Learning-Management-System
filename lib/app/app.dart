@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:learning_management_system/app/provider/navigationBar/navigationBar_provider.dart';
 import 'package:learning_management_system/app/provider/search/search_provider.dart';
 import 'package:learning_management_system/presentation/resources/theme_manager.dart';
+import 'package:learning_management_system/presentation/splash/splash.dart';
 import 'package:provider/provider.dart';
-import '../presentation/bottom_navigationBar/navigationBar_screen.dart';
 import '../presentation/resources/route_manager.dart';
 
 
@@ -32,8 +32,8 @@ class _MyAppState extends State<MyApp> {
           debugShowCheckedModeBanner: false,
           theme: getApplicationTheme(),
           onGenerateRoute: RouteGenerator.getRoute,
-          initialRoute: Routes.navigationBar,
-          home: const NavigationBarScreen(),
+          initialRoute: Routes.splash,
+          home: const SplashScreen(),
         ),);
   }
 }

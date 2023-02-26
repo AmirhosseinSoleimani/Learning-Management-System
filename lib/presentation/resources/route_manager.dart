@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:learning_management_system/presentation/authentication/sign_up/sign_up_screen.dart';
 import 'package:learning_management_system/presentation/resources/string_manager.dart';
+import 'package:learning_management_system/presentation/splash/splash.dart';
 import '../bottom_navigationBar/navigationBar_screen.dart';
-import '../courses.dart';
 
 class Routes{
 
+  // Splash Screen
+  static const String splash = '/';
+
   // NavigationBarScreen
-  static const String navigationBar = '/';
+  static const String navigationBar = '/home_page';
 
   // Authentication
   static const String signUp = '/signUp';
@@ -21,6 +24,8 @@ class Routes{
 class RouteGenerator{
   static Route<dynamic> getRoute(RouteSettings routeSettings){
     switch(routeSettings.name){
+      case Routes.splash:
+        return MaterialPageRoute(builder: (_) => const SplashScreen());
       case Routes.navigationBar:
         return MaterialPageRoute(builder: (_) => const NavigationBarScreen());
       case Routes.signUp:

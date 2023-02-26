@@ -19,7 +19,7 @@ class RiveManagerAssets{
 class ImageManagerAssets{
   static const String spline = '${AssetsPath.authenticationPath}/spline.png';
   static const String headerHomePage = '${AssetsPath.homePagePath}/headerHomePage.png';
-  static const String splash = '${AssetsPath.splashPath}/markLine.png.png';
+  static const String splash = '${AssetsPath.splashPath}/markLine.png';
 }
 
 
