@@ -16,6 +16,7 @@ class IconManagerAssets{
   static const String finance = '${AssetsPath.categoriesPath}/finance.svg';
   static const String iT = '${AssetsPath.categoriesPath}/IT.svg';
   static const String lifestyle = '${AssetsPath.categoriesPath}/lifestyle.svg';
+  static const String healthy = '${AssetsPath.categoriesPath}/healthy.svg';
   static const String marketing = '${AssetsPath.categoriesPath}/marketing.svg';
   static const String music = '${AssetsPath.categoriesPath}/music.svg';
   static const String photograph = '${AssetsPath.categoriesPath}/photograph.svg';

@@ -54,7 +54,7 @@ class CategoriesSection extends StatelessWidget {
                       ),
                       ),
                       label: Text(
-                          categoriesList[index],
+                          categoriesList[index].name!,
                           style: Theme.of(context).textTheme.bodyText1,
                       ),
                     ),
