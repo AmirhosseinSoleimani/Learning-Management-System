@@ -34,3 +34,8 @@ class AppStringSignUp{
 class AppStringSplash{
   static const String epent = 'Epent';
 }
+
+// Categories String
+class AppStringCategories{
+  static const String categories = 'Categories';
+}

@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../../resources/color_manager.dart';
 import '../../resources/string_manager.dart';
 import '../../resources/values_manager.dart';
@@ -19,7 +17,7 @@ class _AllCategoriesState extends State<AllCategories> {
   bool lastStatus = true;
 
   bool get isShrink{
-    return scrollController != null && scrollController!.hasClients && scrollController!.offset > (100);
+    return scrollController != null && scrollController!.hasClients && scrollController!.offset > (AppSize.s50);
   }
 
   void scrollListener(){
@@ -45,7 +43,6 @@ class _AllCategoriesState extends State<AllCategories> {
 
   @override
   Widget build(BuildContext context) {
-    print('cat');
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
@@ -56,23 +53,29 @@ class _AllCategoriesState extends State<AllCategories> {
             SliverAppBar(
               stretch: true,
               pinned: true,
-              toolbarHeight: 60,
+              toolbarHeight: AppSize.s60,
               expandedHeight: AppSize.s120,
-              title: isShrink ? Text(
-                'Categories',style: Theme.of(context).textTheme.headline5,
-              ) : null,
+              title: AnimatedOpacity(
+                duration: const Duration(milliseconds: DurationConstant.d2000),
+                opacity: isShrink ? AppSize.s1 : AppSize.s0,
+                child: Text(
+                  AppStringCategories.categories,
+                  style: Theme.of(context).textTheme.headline5,
+                ),
+              ),
+              centerTitle: true,
               leading: arrowBackButton(context: context),
               flexibleSpace: Padding(
                 padding: const EdgeInsets.all(AppPadding.p12),
                 child: FlexibleSpaceBar(
                   stretchModes: const [StretchMode.zoomBackground],
                   centerTitle: true,
-                  background: Align(
+                  background: isShrink ? null : Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
                       padding: const EdgeInsets.all(AppPadding.p12),
                       child: Text(
-                        'Categories',
+                        AppStringCategories.categories,
                         style: Theme.of(context).textTheme.headline5,
                       ),
                     ),
