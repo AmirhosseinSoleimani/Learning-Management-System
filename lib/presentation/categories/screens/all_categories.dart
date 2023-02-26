@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:learning_management_system/presentation/resources/color_manager.dart';
+import '../../constants/categories_list.dart';
 import '../../resources/string_manager.dart';
 import '../../resources/values_manager.dart';
 import '../../widgets/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
 
 class AllCategories extends StatefulWidget {
   const AllCategories({Key? key}) : super(key: key);
@@ -85,55 +89,20 @@ class _AllCategoriesState extends State<AllCategories> {
             SliverList(
               delegate: SliverChildListDelegate(
                   [
-                    InkWell(
-                      onTap: (){
-                      },
-                      child: Container(
-                        height: 200,
-                        width: double.infinity,
-                        color: Colors.green,
+                    SizedBox(
+                      width: double.infinity,
+                      height: 500,
+                      child: ListView.builder(
+                          itemCount: categoriesList.length,
+                          itemBuilder: (context,index) => ListTile(
+                            title: Text(
+                                categoriesList[index].name!,
+                                style: Theme.of(context).textTheme.headline4,
+                            ),
+                            leading: categoriesList[index].svgPicture,
+                          ),
                       ),
-                    ),
-                    Container(
-                      height: 200,
-                      width: double.infinity,
-                      color: Colors.blue,
-                    ),
-                    Container(
-                      height: 200,
-                      width: double.infinity,
-                      color: Colors.blue,
-                    ),
-                    Container(
-                      height: 200,
-                      width: double.infinity,
-                      color: Colors.blue,
-                    ),
-                    Container(
-                      height: 200,
-                      width: double.infinity,
-                      color: Colors.blue,
-                    ),
-                    Container(
-                      height: 200,
-                      width: double.infinity,
-                      color: Colors.blue,
-                    ),
-                    Container(
-                      height: 200,
-                      width: double.infinity,
-                      color: Colors.blue,
-                    ),
-                    Container(
-                      height: 200,
-                      width: double.infinity,
-                      color: Colors.blue,
-                    ),
-                    Container(
-                      height: 200,
-                      width: double.infinity,
-                      color: Colors.red,
-                    ),
+                    )
                   ]
               ),
             ),
