@@ -31,11 +31,11 @@ class RouteGenerator{
       case Routes.splash:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case Routes.navigationBar:
-        return CustomPageRoute(child: const NavigationBarScreen());
+        return CustomPageRouteToRight(child: const NavigationBarScreen());
       case Routes.allCategories:
-        return CustomPageRoute(child: const AllCategories());
+        return CustomPageRouteToRight(child: const AllCategories());
       case Routes.signUp:
-        return CustomPageRoute(child: const SignUpScreen());
+        return CustomPageRouteToRight(child: const SignUpScreen());
       default:
         return unDefinedRoute();
     }
@@ -54,9 +54,9 @@ class RouteGenerator{
 }
 
 
-class CustomPageRoute extends PageRouteBuilder{
+class CustomPageRouteToRight extends PageRouteBuilder{
   final Widget child;
-  CustomPageRoute({
+  CustomPageRouteToRight({
     required this.child,}) : super(
     transitionDuration: const Duration(milliseconds: 500),
     reverseTransitionDuration: const Duration(milliseconds: 500),
@@ -73,4 +73,25 @@ class CustomPageRoute extends PageRouteBuilder{
         child: child,
       );
     });
+}
+
+class CustomPageRouteToUp extends PageRouteBuilder{
+  final Widget child;
+  CustomPageRouteToUp({
+    required this.child,}) : super(
+      transitionDuration: const Duration(milliseconds: 500),
+      reverseTransitionDuration: const Duration(milliseconds: 500),
+      pageBuilder: (context,animation,secondaryAnimation) => child,
+      transitionsBuilder: (context,animation,anotherAnimation,child){
+        animation = CurvedAnimation(
+            parent: animation,
+            curve: Curves.linear);
+        return SlideTransition(
+          position: Tween<Offset>(
+            begin: const Offset(0,1),
+            end: Offset.zero,
+          ).animate(animation),
+          child: child,
+        );
+      });
 }
