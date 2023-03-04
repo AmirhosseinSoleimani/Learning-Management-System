@@ -6,6 +6,7 @@ import 'package:learning_management_system/presentation/resources/values_manager
 import 'package:provider/provider.dart';
 import '../../../../../app/provider/search/search_provider.dart';
 import '../../../../resources/color_manager.dart';
+import '../../../../resources/route_manager.dart';
 import '../../../../resources/string_manager.dart';
 import '../../../widgets.dart';
 import '../widgets/categories_section.dart';
@@ -213,10 +214,9 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
-        bottomNavigationBar: signInElevatedButton(onPressed: (){}, context: context),
+        bottomNavigationBar: signInElevatedButton(onPressed: (){Navigator.pushNamed(context, Routes.singIn);}, context: context),
       ),
     );
   }
 }
-
 

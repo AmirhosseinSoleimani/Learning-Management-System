@@ -3,24 +3,29 @@ import 'package:learning_management_system/presentation/authentication/sign_up/s
 import 'package:learning_management_system/presentation/categories/screens/all_categories.dart';
 import 'package:learning_management_system/presentation/resources/string_manager.dart';
 import 'package:learning_management_system/presentation/splash/splash.dart';
+import '../authentication/sign_in/screens/sign_in_screen.dart';
 import '../bottom_navigationBar/navigationBar_screen.dart';
 
 class Routes{
 
-  // Splash Screen
+  /// Splash Screen
   static const String splash = '/';
 
-  // NavigationBarScreen
+  /// NavigationBarScreen
   static const String navigationBar = '/home_page';
 
-  // Authentication
+  /// Authentication SignUp
   static const String signUp = '/signUp';
 
-  // All Courses
+  /// Authentication SignIn
+  static const String singIn = '/signIn';
+
+  /// All Courses
   static const String allCourses = '/all_courses';
 
-  // All Categories
+  /// All Categories
   static const String allCategories = '/all_categories';
+
 
 }
 
@@ -36,6 +41,8 @@ class RouteGenerator{
         return CustomPageRouteToRight(child: const AllCategories());
       case Routes.signUp:
         return CustomPageRouteToRight(child: const SignUpScreen());
+      case Routes.singIn:
+        return CustomPageRouteToUp(child: const SignInScreen());
       default:
         return unDefinedRoute();
     }

@@ -56,9 +56,9 @@ BottomNavigationBarItem customNavigationBar(
   );
 }
 
-Widget signInElevatedButton({required Function onPressed, required BuildContext context}){
+Widget signInElevatedButton({required VoidCallback onPressed, required BuildContext context}){
   return ElevatedButton(
-      onPressed: () => onPressed,
+      onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: ColorManager.white,
         shape: RoundedRectangleBorder(
