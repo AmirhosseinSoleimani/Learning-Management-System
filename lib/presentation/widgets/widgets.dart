@@ -93,3 +93,38 @@ Widget svgPicture({required String svgPictureAddress,Color color = Colors.white,
     ),
   );
 }
+
+Widget typeOfAuthenticationButton({required String svgPictureAddress,required String text,Color? color}){
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: AppPadding.p20,vertical: AppPadding.p8),
+    child: ElevatedButton(
+        style: ButtonStyle(
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(AppSize.s6),
+                )
+            )
+        ),
+        onPressed: (){},
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: AppSize.s20,
+              height: AppSize.s20,
+              child: SvgPicture.asset(
+                  svgPictureAddress,
+                  color: color,
+              ),
+            ),
+            const SizedBox(
+              width: AppSize.s8,
+            ),
+            Text(
+                text,
+            )
+          ],
+        ),
+    ),
+  );
+}

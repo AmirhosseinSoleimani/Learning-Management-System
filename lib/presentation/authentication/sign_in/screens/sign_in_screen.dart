@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:learning_management_system/presentation/resources/assets_manager.dart';
 import 'package:learning_management_system/presentation/resources/color_manager.dart';
 import 'package:learning_management_system/presentation/resources/values_manager.dart';
+import 'package:learning_management_system/presentation/widgets/widgets.dart';
 
 import '../../../resources/string_manager.dart';
 import '../../../resources/style_manager.dart';
@@ -59,7 +61,9 @@ class SignInScreen extends StatelessWidget {
                   style: getSemiBoldStyle(fontSize: AppSize.s14, color: ColorManager.darkWhite1),
                 ),
               ],
-            )
+            ),
+            typeOfAuthenticationButton(
+                svgPictureAddress: IconManagerAssets.email, text: 'email',color: ColorManager.white)
           ],
         ),
       ),

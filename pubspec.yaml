@@ -76,6 +76,7 @@ flutter:
     - assets/rive_assets/
     - assets/image/splash/
     - assets/icons/categories/
+    - assets/icons/authentication/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

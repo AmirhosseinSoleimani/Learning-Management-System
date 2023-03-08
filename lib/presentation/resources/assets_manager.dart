@@ -6,6 +6,7 @@ class AssetsPath{
   static const String homePagePath = 'assets/image/home_page';
   static const String splashPath = 'assets/image/splash';
   static const String categoriesPath = 'assets/icons/categories';
+  static const String authentication = 'assets/icons/authentication';
 }
 
 class IconManagerAssets{
@@ -21,6 +22,10 @@ class IconManagerAssets{
   static const String music = '${AssetsPath.categoriesPath}/music.svg';
   static const String photograph = '${AssetsPath.categoriesPath}/photograph.svg';
   static const String productivity = '${AssetsPath.categoriesPath}/productivity.svg';
+  static const String google = '${AssetsPath.authentication}/google.svg';
+  static const String facebook = '${AssetsPath.authentication}/facebook.svg';
+  static const String email = '${AssetsPath.authentication}/email.svg';
+  static const String sms = '${AssetsPath.authentication}/sms.svg';
 
 }
 
