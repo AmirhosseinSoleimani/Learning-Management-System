@@ -4,6 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:learning_management_system/presentation/resources/color_manager.dart';
 import 'package:learning_management_system/presentation/resources/values_manager.dart';
 
+import '../../../resources/string_manager.dart';
+import '../../../resources/style_manager.dart';
+
 class SignInScreen extends StatelessWidget {
   const SignInScreen({Key? key}) : super(key: key);
 
@@ -18,14 +21,45 @@ class SignInScreen extends StatelessWidget {
             statusBarBrightness: Brightness.dark,
           ),
           backgroundColor: ColorManager.black,
-          leading: const Icon(
+          leading: Icon(
               CupertinoIcons.clear,
+              color: ColorManager.darkWhite1,
               size: AppSize.s20,
           ),
         ),
         body: Column(
           children: [
-            Text('Sign in')
+            Text(
+                AppStringSignIn.signIn,
+                style: Theme.of(context).textTheme.headline5,
+            ),
+            Text(
+              AppStringSignIn.headerTextFirstLine,
+              style: getRegularStyle(fontSize: AppSize.s14, color: ColorManager.darkWhite1),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  AppStringSignIn.terms,
+                  style: getSemiBoldStyle(fontSize: AppSize.s14, color: ColorManager.darkWhite1),
+                ),
+                const SizedBox(
+                  width: AppSize.s4,
+                ),
+                Text(
+                  AppStringSignIn.and,
+                  style: getRegularStyle(fontSize: AppSize.s14, color: ColorManager.darkWhite1),
+                ),
+                const SizedBox(
+                  width: AppSize.s4,
+                ),
+                Text(
+                  AppStringSignIn.privacy,
+                  style: getSemiBoldStyle(fontSize: AppSize.s14, color: ColorManager.darkWhite1),
+                ),
+              ],
+            )
           ],
         ),
       ),

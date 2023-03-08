@@ -30,6 +30,16 @@ class AppStringSignUp{
 
 }
 
+// SignIn
+class AppStringSignIn{
+  static const String signIn = 'Sign in';
+  static const String headerTextFirstLine = 'By using our services you are agreeing to our';
+  static const String terms = 'Terms';
+  static const String and = 'and';
+  static const String privacy = 'Privacy Statement';
+
+}
+
 // Splash String
 class AppStringSplash{
   static const String epent = 'Epent';
