@@ -62,6 +62,9 @@ class SignInScreen extends StatelessWidget {
                 ),
               ],
             ),
+            const SizedBox(
+              height: AppSize.s60,
+            ),
             typeOfAuthenticationButton(
                 svgPictureAddress: IconManagerAssets.email, text: AppStringSignIn.email,color: ColorManager.darkWhite1,width: AppSize.s24,height: AppSize.s24),
             typeOfAuthenticationButton(
@@ -70,6 +73,26 @@ class SignInScreen extends StatelessWidget {
                 svgPictureAddress: IconManagerAssets.google, text: AppStringSignIn.google),
             typeOfAuthenticationButton(
                 svgPictureAddress: IconManagerAssets.facebook, text: AppStringSignIn.facebook),
+            const Spacer(),
+            Padding(
+              padding: const EdgeInsets.only(bottom: AppSize.s14),
+              child: GestureDetector(
+                onTap: (){},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      AppStringSignIn.firstPartSignUp,
+                      style: getRegularStyle(fontSize: AppSize.s14, color: ColorManager.darkWhite1),
+                    ),
+                    const SizedBox(
+                      width: AppSize.s6,
+                    ),
+                    Text(AppStringSignIn.secondPartSignUp,style: Theme.of(context).textTheme.subtitle1,),
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),

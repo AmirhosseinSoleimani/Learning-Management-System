@@ -41,6 +41,8 @@ class AppStringSignIn{
   static const String sms = 'Sign in with Sms';
   static const String facebook = 'Sign in with Facebook';
   static const String google = 'Sign in with Google';
+  static const String firstPartSignUp = 'New here?';
+  static const String secondPartSignUp = 'Create account';
 
 }
 
