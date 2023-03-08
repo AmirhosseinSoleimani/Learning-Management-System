@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:learning_management_system/presentation/resources/style_manager.dart';
 import 'package:learning_management_system/presentation/resources/values_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../resources/color_manager.dart';
@@ -94,7 +95,7 @@ Widget svgPicture({required String svgPictureAddress,Color color = Colors.white,
   );
 }
 
-Widget typeOfAuthenticationButton({required String svgPictureAddress,required String text,Color? color}){
+Widget typeOfAuthenticationButton({required String svgPictureAddress,required String text,Color? color,double width = 20,double height = 20}){
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: AppPadding.p20,vertical: AppPadding.p8),
     child: ElevatedButton(
@@ -110,8 +111,8 @@ Widget typeOfAuthenticationButton({required String svgPictureAddress,required St
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: AppSize.s20,
-              height: AppSize.s20,
+              width: width,
+              height: height,
               child: SvgPicture.asset(
                   svgPictureAddress,
                   color: color,
@@ -122,6 +123,7 @@ Widget typeOfAuthenticationButton({required String svgPictureAddress,required St
             ),
             Text(
                 text,
+              style: getSemiBoldStyle(fontSize: AppSize.s14, color: ColorManager.darkWhite1),
             )
           ],
         ),
