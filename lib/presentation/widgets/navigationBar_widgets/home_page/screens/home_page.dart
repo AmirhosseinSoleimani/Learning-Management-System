@@ -214,7 +214,9 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
-        bottomNavigationBar: signInElevatedButton(onPressed: (){Navigator.pushNamed(context, Routes.singIn);}, context: context),
+        bottomNavigationBar: signInElevatedButton(onPressed: (){
+          Navigator.pushNamed(context, Routes.singIn);
+          }, context: context),
       ),
     );
   }

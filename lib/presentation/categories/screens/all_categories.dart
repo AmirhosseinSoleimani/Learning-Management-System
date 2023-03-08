@@ -14,7 +14,6 @@ class AllCategories extends StatefulWidget {
 }
 
 class _AllCategoriesState extends State<AllCategories> {
-
   ScrollController? scrollController;
   bool lastStatus = true;
 
@@ -45,6 +44,7 @@ class _AllCategoriesState extends State<AllCategories> {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint('all_categories');
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
