@@ -5,13 +5,12 @@ import 'package:learning_management_system/presentation/resources/assets_manager
 import 'package:learning_management_system/presentation/resources/color_manager.dart';
 import 'package:learning_management_system/presentation/resources/values_manager.dart';
 import 'package:learning_management_system/presentation/widgets/widgets.dart';
-
+import '../../../resources/route_manager.dart';
 import '../../../resources/string_manager.dart';
 import '../../../resources/style_manager.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -23,10 +22,15 @@ class SignInScreen extends StatelessWidget {
             statusBarBrightness: Brightness.dark,
           ),
           backgroundColor: ColorManager.black,
-          leading: Icon(
-              CupertinoIcons.clear,
-              color: ColorManager.darkWhite1,
-              size: AppSize.s20,
+          leading: IconButton(
+            onPressed: (){
+              Navigator.pushReplacementNamed(context, Routes.navigationBar);
+            },
+            icon: Icon(
+                CupertinoIcons.clear,
+                color: ColorManager.darkWhite1,
+                size: AppSize.s20,
+            ),
           ),
         ),
         body: Column(
@@ -77,7 +81,9 @@ class SignInScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(bottom: AppSize.s14),
               child: GestureDetector(
-                onTap: (){},
+                onTap: (){
+                  Navigator.pushReplacementNamed(context, Routes.signUp);
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

@@ -40,7 +40,7 @@ class RouteGenerator{
       case Routes.allCategories:
         return CustomPageRouteToRight(child: const AllCategories());
       case Routes.signUp:
-        return CustomPageRouteToRight(child: const SignUpScreen());
+        return CustomPageRouteToUp(child: const SignUpScreen());
       case Routes.singIn:
         return CustomPageRouteToUp(child: const SignInScreen());
       default:

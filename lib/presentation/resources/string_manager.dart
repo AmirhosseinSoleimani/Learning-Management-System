@@ -24,10 +24,17 @@ class AppStringHomePage{
 
 // SignUp
 class AppStringSignUp{
-  static const String headerText = 'Sign Up to Learning Management System';
-  static const String signInButtonText = 'Sign in';
-  static const String signUpButtonText = 'Sign up';
-
+  static const String signUp = 'Sign up';
+  static const String headerTextFirstLine = 'By using our services you are agreeing to our';
+  static const String terms = 'Terms';
+  static const String and = 'and';
+  static const String privacy = 'Privacy Statement';
+  static const String email = 'Sign up with Email';
+  static const String sms = 'Sign up with Sms';
+  static const String facebook = 'Sign up with Facebook';
+  static const String google = 'Sign up with Google';
+  static const String firstPartSignUp = 'Have an account?';
+  static const String secondPartSignUp = 'Sign in';
 }
 
 // SignIn

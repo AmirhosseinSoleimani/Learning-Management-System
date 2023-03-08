@@ -67,6 +67,10 @@ class _HomePageState extends State<HomePage> {
             SliverAppBar(
               stretch: true,
               pinned: true,
+              leading: const SizedBox(
+                width: AppSize.s0,
+                height: AppSize.s0,
+              ),
               backgroundColor: isShrink ? ColorManager.lightBlack1 : ColorManager.black,
               toolbarHeight: AppSize.s0,
               expandedHeight: AppSize.s250,
@@ -96,6 +100,10 @@ class _HomePageState extends State<HomePage> {
             SliverAppBar(
               backgroundColor: isShrink ? ColorManager.lightBlack1 : ColorManager.black,
               toolbarHeight: AppSize.s120,
+              leading: const SizedBox(
+                width: AppSize.s0,
+                height: AppSize.s0,
+              ),
               pinned: true,
               flexibleSpace: Padding(
                 padding: const EdgeInsets.all(AppPadding.p12),

@@ -67,7 +67,7 @@ Widget signInElevatedButton({required VoidCallback onPressed, required BuildCont
         )
       ),
       child: Text(
-          AppStringSignUp.signInButtonText,
+          AppStringSignIn.signIn,
         style: Theme.of(context).textTheme.button,
       ),
   );
