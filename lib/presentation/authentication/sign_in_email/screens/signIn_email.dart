@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:learning_management_system/presentation/resources/color_manager.dart';
 import '../../../resources/string_manager.dart';
@@ -79,6 +80,19 @@ class _SignInWithEmailScreenState extends State<SignInWithEmailScreen> {
                   focusColor: ColorManager.darkWhite1,
                   hintText: AppStringSignIn.hintTextEmail,
                   hintStyle: Theme.of(context).textTheme.labelMedium,
+                  suffixIcon: (_emailController.text.isEmpty) ? null :
+                     IconButton(
+                       onPressed: () {
+                         setState(() {
+                           _emailController.clear();
+                         });
+                       },
+                       icon: Icon(
+                           CupertinoIcons.clear,
+                           color: ColorManager.white,
+                           size: AppSize.s20,
+                       ),
+                     )
                 ),
                 keyboardType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.done,
