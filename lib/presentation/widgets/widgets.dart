@@ -131,7 +131,7 @@ Widget typeOfAuthenticationButton({required VoidCallback onPressed,required Stri
   );
 }
 
-Widget customTextForFieldOutLine({required BuildContext context,TextEditingController? textEditingController,VoidCallback? onTap,FocusNode? focusNode,String? hintText,required TextInputType textInputType,bool autoFocus = false}){
+Widget customTextForFieldOutLine({required BuildContext context,TextEditingController? textEditingController,Function(String value)? onChange,FocusNode? focusNode,String? hintText,required TextInputType textInputType,bool autoFocus = false}){
   return Padding(
     padding: const EdgeInsets.all(AppPadding.p12),
     child: SizedBox(
@@ -139,7 +139,7 @@ Widget customTextForFieldOutLine({required BuildContext context,TextEditingContr
       height: AppSize.s40,
       child: TextFormField(
         controller: textEditingController,
-        onTap: onTap,
+        onChanged: onChange,
         focusNode: focusNode,
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
@@ -170,19 +170,21 @@ Widget customTextForFieldOutLine({required BuildContext context,TextEditingContr
         enableSuggestions: true,
         autofocus: autoFocus,
         style: getRegularStyle(fontSize: AppSize.s16, color: ColorManager.darkWhite1),
+        cursorColor: ColorManager.darkWhite1,
+        cursorHeight: AppSize.s24,
       ),
     ),
   );
 }
 
-Widget customElevatedButton({required BuildContext context,required String text}){
+Widget customElevatedButton({required BuildContext context,required String text,VoidCallback? onPressed}){
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(
       width: (MediaQuery.of(context).size.width - AppPadding.p24),
       height: AppSize.s40,
       child: ElevatedButton(
-        onPressed: (){},
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
             backgroundColor: ColorManager.darkGrey,
             side: BorderSide(

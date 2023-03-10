@@ -15,6 +15,7 @@ class SignInWithEmailScreen extends StatefulWidget {
 class _SignInWithEmailScreenState extends State<SignInWithEmailScreen> {
   final TextEditingController _emailController = TextEditingController();
   final FocusNode _emailFocusNode = FocusNode();
+  String text = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,13 +42,25 @@ class _SignInWithEmailScreenState extends State<SignInWithEmailScreen> {
           ),
           customTextForFieldOutLine(
             context: context,
+            onChange: (value){
+              setState(() {
+                _emailController.text = value;
+                _emailController.selection = TextSelection.fromPosition(TextPosition(offset: _emailController.text.length));
+
+              });
+              },
             textEditingController: _emailController,
             focusNode: _emailFocusNode,
             hintText: AppStringSignIn.hintTextEmail,
             textInputType: TextInputType.emailAddress,
             autoFocus: true,
           ),
-          customElevatedButton(context: context, text: AppStringSignIn.nextButton,)
+          customElevatedButton(
+              context: context,
+              text: AppStringSignIn.nextButton,
+              onPressed: (){
+                print(_emailController.text);
+              }),
         ],
       ),
     );
