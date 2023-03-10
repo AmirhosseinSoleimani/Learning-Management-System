@@ -40,27 +40,61 @@ class _SignInWithEmailScreenState extends State<SignInWithEmailScreen> {
           const SizedBox(
             height: AppSize.s60,
           ),
-          customTextForFieldOutLine(
-            context: context,
-            onChange: (value){
-              setState(() {
-                _emailController.text = value;
-                _emailController.selection = TextSelection.fromPosition(TextPosition(offset: _emailController.text.length));
-
-              });
-              },
-            textEditingController: _emailController,
-            focusNode: _emailFocusNode,
-            hintText: AppStringSignIn.hintTextEmail,
-            textInputType: TextInputType.emailAddress,
-            autoFocus: true,
+          Padding(
+            padding: const EdgeInsets.all(AppPadding.p12),
+            child: SizedBox(
+              width: (MediaQuery.of(context).size.width - AppPadding.p24),
+              height: AppSize.s40,
+              child: TextFormField(
+                controller: _emailController,
+                onChanged: (String? value){
+                  setState(() {
+                    _emailController.text = value!;
+                    _emailController.selection = TextSelection.fromPosition(TextPosition(offset: _emailController.text.length));
+                  });
+                },
+                onSaved: (String? value){},
+                validator: (String? value){},
+                focusNode: _emailFocusNode,
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                          width: AppSize.s1_5,
+                          color: ColorManager.darkWhite1)
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                          width: AppSize.s1_5,
+                          color: ColorManager.darkWhite1)
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                      vertical: AppPadding.p8,
+                      horizontal: AppPadding.p8
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(width: AppSize.s1,color: ColorManager.darkWhite1),
+                    borderRadius:
+                    BorderRadius.circular(AppSize.s4),
+                  ),
+                  focusColor: ColorManager.darkWhite1,
+                  hintText: AppStringSignIn.hintTextEmail,
+                  hintStyle: Theme.of(context).textTheme.labelMedium,
+                ),
+                keyboardType: TextInputType.emailAddress,
+                textInputAction: TextInputAction.done,
+                enableSuggestions: true,
+                autofocus: true,
+                style: getRegularStyle(fontSize: AppSize.s16, color: ColorManager.darkWhite1),
+                cursorColor: ColorManager.darkWhite1,
+                cursorHeight: AppSize.s24,
+              ),
+            ),
           ),
           customElevatedButton(
               context: context,
               text: AppStringSignIn.nextButton,
-              onPressed: (){
-                print(_emailController.text);
-              }),
+              onPressed: (){},
+          )
         ],
       ),
     );

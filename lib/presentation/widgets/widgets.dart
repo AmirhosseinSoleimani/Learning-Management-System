@@ -131,51 +131,6 @@ Widget typeOfAuthenticationButton({required VoidCallback onPressed,required Stri
   );
 }
 
-Widget customTextForFieldOutLine({required BuildContext context,TextEditingController? textEditingController,Function(String value)? onChange,FocusNode? focusNode,String? hintText,required TextInputType textInputType,bool autoFocus = false}){
-  return Padding(
-    padding: const EdgeInsets.all(AppPadding.p12),
-    child: SizedBox(
-      width: (MediaQuery.of(context).size.width - AppPadding.p24),
-      height: AppSize.s40,
-      child: TextFormField(
-        controller: textEditingController,
-        onChanged: onChange,
-        focusNode: focusNode,
-        decoration: InputDecoration(
-          enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                  width: AppSize.s1_5,
-                  color: ColorManager.darkWhite1)
-          ),
-          focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                  width: AppSize.s1_5,
-                  color: ColorManager.darkWhite1)
-          ),
-          contentPadding: const EdgeInsets.symmetric(
-            vertical: AppPadding.p8,
-            horizontal: AppPadding.p8
-          ),
-          border: OutlineInputBorder(
-            borderSide: BorderSide(width: AppSize.s1,color: ColorManager.darkWhite1),
-            borderRadius:
-            BorderRadius.circular(AppSize.s4),
-          ),
-          focusColor: ColorManager.darkWhite1,
-          hintText: hintText,
-          hintStyle: Theme.of(context).textTheme.labelMedium,
-        ),
-        keyboardType: textInputType,
-        textInputAction: TextInputAction.done,
-        enableSuggestions: true,
-        autofocus: autoFocus,
-        style: getRegularStyle(fontSize: AppSize.s16, color: ColorManager.darkWhite1),
-        cursorColor: ColorManager.darkWhite1,
-        cursorHeight: AppSize.s24,
-      ),
-    ),
-  );
-}
 
 Widget customElevatedButton({required BuildContext context,required String text,VoidCallback? onPressed}){
   return Padding(
