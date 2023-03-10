@@ -95,7 +95,7 @@ Widget svgPicture({required String svgPictureAddress,Color color = Colors.white,
   );
 }
 
-Widget typeOfAuthenticationButton({required String svgPictureAddress,required String text,Color? color,double width = 20,double height = 20}){
+Widget typeOfAuthenticationButton({required VoidCallback onPressed,required String svgPictureAddress,required String text,Color? color,double width = 20,double height = 20}){
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: AppPadding.p20,vertical: AppPadding.p4),
     child: ElevatedButton(
@@ -106,7 +106,7 @@ Widget typeOfAuthenticationButton({required String svgPictureAddress,required St
                 )
             )
         ),
-        onPressed: (){},
+        onPressed: onPressed,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

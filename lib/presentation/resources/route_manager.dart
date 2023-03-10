@@ -4,6 +4,7 @@ import 'package:learning_management_system/presentation/categories/screens/all_c
 import 'package:learning_management_system/presentation/resources/string_manager.dart';
 import 'package:learning_management_system/presentation/splash/splash.dart';
 import '../authentication/sign_in/screens/sign_in_screen.dart';
+import '../authentication/sign_in_email/screens/signIn_email.dart';
 import '../bottom_navigationBar/navigationBar_screen.dart';
 
 class Routes{
@@ -19,6 +20,9 @@ class Routes{
 
   /// Authentication SignIn
   static const String singIn = '/signIn';
+
+  /// Authentication SignIn With Email
+  static const String singInWithEmail = '/signIn_email';
 
   /// All Courses
   static const String allCourses = '/all_courses';
@@ -43,6 +47,8 @@ class RouteGenerator{
         return CustomPageRouteToUp(child: const SignUpScreen());
       case Routes.singIn:
         return CustomPageRouteToUp(child: const SignInScreen());
+      case Routes.singInWithEmail:
+        return CustomPageRouteToRight(child: const SignInWithEmailScreen());
       default:
         return unDefinedRoute();
     }

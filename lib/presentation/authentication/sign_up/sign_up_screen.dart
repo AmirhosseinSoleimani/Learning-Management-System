@@ -70,13 +70,13 @@ class SignUpScreen extends StatelessWidget {
               height: AppSize.s60,
             ),
             typeOfAuthenticationButton(
-                svgPictureAddress: IconManagerAssets.email, text: AppStringSignUp.email,color: ColorManager.darkWhite1,width: AppSize.s24,height: AppSize.s24),
+                svgPictureAddress: IconManagerAssets.email, text: AppStringSignUp.email,color: ColorManager.darkWhite1,width: AppSize.s24,height: AppSize.s24, onPressed: () {  }),
             typeOfAuthenticationButton(
-                svgPictureAddress: IconManagerAssets.sms, text: AppStringSignUp.sms,width: AppSize.s30,height: AppSize.s30),
+                svgPictureAddress: IconManagerAssets.sms, text: AppStringSignUp.sms,width: AppSize.s30,height: AppSize.s30, onPressed: () {  }),
             typeOfAuthenticationButton(
-                svgPictureAddress: IconManagerAssets.google, text: AppStringSignUp.google),
+                svgPictureAddress: IconManagerAssets.google, text: AppStringSignUp.google, onPressed: () {  }),
             typeOfAuthenticationButton(
-                svgPictureAddress: IconManagerAssets.facebook, text: AppStringSignUp.facebook),
+                svgPictureAddress: IconManagerAssets.facebook, text: AppStringSignUp.facebook, onPressed: () {  }),
             const Spacer(),
             Padding(
               padding: const EdgeInsets.only(bottom: AppSize.s14),
