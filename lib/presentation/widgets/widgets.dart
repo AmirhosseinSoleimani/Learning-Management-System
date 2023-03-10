@@ -174,3 +174,30 @@ Widget customTextForFieldOutLine({required BuildContext context,TextEditingContr
     ),
   );
 }
+
+Widget customElevatedButton({required BuildContext context,required String text}){
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: SizedBox(
+      width: (MediaQuery.of(context).size.width - AppPadding.p24),
+      height: AppSize.s40,
+      child: ElevatedButton(
+        onPressed: (){},
+        style: ElevatedButton.styleFrom(
+            backgroundColor: ColorManager.darkGrey,
+            side: BorderSide(
+              width: AppSize.s1_5,
+              color: ColorManager.darkGrey,
+            ),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(AppSize.s4)
+            )
+        ),
+        child: Text(
+          text,
+          style: Theme.of(context).textTheme.button,
+        ),
+      ),
+    ),
+  );
+}

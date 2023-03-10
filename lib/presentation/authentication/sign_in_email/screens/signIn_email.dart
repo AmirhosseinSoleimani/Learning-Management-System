@@ -46,7 +46,8 @@ class _SignInWithEmailScreenState extends State<SignInWithEmailScreen> {
             hintText: AppStringSignIn.hintTextEmail,
             textInputType: TextInputType.emailAddress,
             autoFocus: true,
-          )
+          ),
+          customElevatedButton(context: context, text: AppStringSignIn.nextButton,)
         ],
       ),
     );

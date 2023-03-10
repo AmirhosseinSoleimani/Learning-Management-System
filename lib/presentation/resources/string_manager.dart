@@ -53,6 +53,7 @@ class AppStringSignIn{
   static const String welcome = 'Welcome back!';
   static const String headerTextSignInWithEmail = 'Enter your email to log in your account';
   static const String hintTextEmail = 'Enter your email';
+  static const String nextButton = 'Next';
 }
 
 // Splash String
