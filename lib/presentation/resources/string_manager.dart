@@ -50,7 +50,9 @@ class AppStringSignIn{
   static const String google = 'Sign in with Google';
   static const String firstPartSignUp = 'New here?';
   static const String secondPartSignUp = 'Create account';
-
+  static const String welcome = 'Welcome back!';
+  static const String headerTextSignInWithEmail = 'Enter your email to log in your account';
+  static const String hintTextEmail = 'Enter your email';
 }
 
 // Splash String

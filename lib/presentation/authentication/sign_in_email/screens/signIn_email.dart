@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:learning_management_system/presentation/resources/color_manager.dart';
-
+import '../../../resources/string_manager.dart';
+import '../../../resources/style_manager.dart';
+import '../../../resources/values_manager.dart';
 import '../../../widgets/widgets.dart';
 
-class SignInWithEmailScreen extends StatelessWidget {
+class SignInWithEmailScreen extends StatefulWidget {
   const SignInWithEmailScreen({Key? key}) : super(key: key);
 
+  @override
+  State<SignInWithEmailScreen> createState() => _SignInWithEmailScreenState();
+}
+
+class _SignInWithEmailScreenState extends State<SignInWithEmailScreen> {
+  final TextEditingController _emailController = TextEditingController();
+  final FocusNode _emailFocusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,9 +23,30 @@ class SignInWithEmailScreen extends StatelessWidget {
         leading: arrowBackButton(context: context),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text('Welcome back!'),
-          Text('Enter your email to log in youe account'),
+          Align(
+            alignment: Alignment.center,
+            child: Text(
+                AppStringSignIn.welcome,
+                style: Theme.of(context).textTheme.headline5,
+            ),
+          ),
+          Text(
+            AppStringSignIn.headerTextSignInWithEmail,
+            style: getRegularStyle(fontSize: AppSize.s14, color: ColorManager.darkWhite1),
+          ),
+          const SizedBox(
+            height: AppSize.s60,
+          ),
+          customTextForFieldOutLine(
+            context: context,
+            textEditingController: _emailController,
+            focusNode: _emailFocusNode,
+            hintText: AppStringSignIn.hintTextEmail,
+            textInputType: TextInputType.emailAddress,
+            autoFocus: true,
+          )
         ],
       ),
     );
