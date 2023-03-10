@@ -70,7 +70,7 @@ class SignInScreen extends StatelessWidget {
               height: AppSize.s60,
             ),
             typeOfAuthenticationButton(
-                svgPictureAddress: IconManagerAssets.email, text: AppStringSignIn.email,color: ColorManager.darkWhite1,width: AppSize.s24,height: AppSize.s24, onPressed: () { Navigator.pushNamed(context, Routes.singInWithEmail); }),
+                svgPictureAddress: IconManagerAssets.email, text: AppStringSignIn.signInEmail,color: ColorManager.darkWhite1,width: AppSize.s24,height: AppSize.s24, onPressed: () { Navigator.pushNamed(context, Routes.singInWithEmail); }),
             typeOfAuthenticationButton(
                 svgPictureAddress: IconManagerAssets.sms, text: AppStringSignIn.sms,width: AppSize.s30,height: AppSize.s30, onPressed: () {  }),
             typeOfAuthenticationButton(

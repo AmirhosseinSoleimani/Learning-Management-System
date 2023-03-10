@@ -132,7 +132,7 @@ Widget typeOfAuthenticationButton({required VoidCallback onPressed,required Stri
 }
 
 
-Widget customElevatedButton({required BuildContext context,required String text,VoidCallback? onPressed}){
+Widget customElevatedButton({required BuildContext context,required String text,VoidCallback? onPressed,required Color color}){
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: SizedBox(
@@ -141,10 +141,10 @@ Widget customElevatedButton({required BuildContext context,required String text,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-            backgroundColor: ColorManager.darkGrey,
+            backgroundColor: color,
             side: BorderSide(
               width: AppSize.s1_5,
-              color: ColorManager.darkGrey,
+              color: color
             ),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(AppSize.s4)

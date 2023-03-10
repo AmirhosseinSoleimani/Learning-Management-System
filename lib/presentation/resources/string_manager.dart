@@ -44,7 +44,7 @@ class AppStringSignIn{
   static const String terms = 'Terms';
   static const String and = 'and';
   static const String privacy = 'Privacy Statement';
-  static const String email = 'Sign in with Email';
+  static const String signInEmail = 'Sign in with Email';
   static const String sms = 'Sign in with Sms';
   static const String facebook = 'Sign in with Facebook';
   static const String google = 'Sign in with Google';
@@ -54,6 +54,8 @@ class AppStringSignIn{
   static const String headerTextSignInWithEmail = 'Enter your email to log in your account';
   static const String hintTextEmail = 'Enter your email';
   static const String nextButton = 'Next';
+  static const String validTextForm = 'The email entered is not valid.';
+  static const String email = 'Email';
 }
 
 // Splash String

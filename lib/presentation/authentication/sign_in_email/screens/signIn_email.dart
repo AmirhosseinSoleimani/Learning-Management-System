@@ -16,7 +16,7 @@ class SignInWithEmailScreen extends StatefulWidget {
 class _SignInWithEmailScreenState extends State<SignInWithEmailScreen> {
   final TextEditingController _emailController = TextEditingController();
   final FocusNode _emailFocusNode = FocusNode();
-  String text = '';
+  bool activeColor = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,17 +45,35 @@ class _SignInWithEmailScreenState extends State<SignInWithEmailScreen> {
             padding: const EdgeInsets.all(AppPadding.p12),
             child: SizedBox(
               width: (MediaQuery.of(context).size.width - AppPadding.p24),
-              height: AppSize.s40,
+              height: AppSize.s60,
               child: TextFormField(
                 controller: _emailController,
                 onChanged: (String? value){
                   setState(() {
                     _emailController.text = value!;
                     _emailController.selection = TextSelection.fromPosition(TextPosition(offset: _emailController.text.length));
+                    if(_emailController.text.isEmpty){
+                      setState(() {
+                        activeColor = false;
+                      });
+                    }
+                    else if(!_emailController.text.contains('@')){
+                      setState(() {
+                        activeColor = false;
+                      });
+                    }
+                    else if (!RegExp(r'\S+@\S+\.\S+').hasMatch(_emailController.text)) {
+                      setState(() {
+                        activeColor = false;
+                      });
+                    }
+                    else{
+                      setState(() {
+                        activeColor = true;
+                      });
+                    }
                   });
                 },
-                onSaved: (String? value){},
-                validator: (String? value){},
                 focusNode: _emailFocusNode,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
@@ -80,6 +98,9 @@ class _SignInWithEmailScreenState extends State<SignInWithEmailScreen> {
                   focusColor: ColorManager.darkWhite1,
                   hintText: AppStringSignIn.hintTextEmail,
                   hintStyle: Theme.of(context).textTheme.labelMedium,
+                  label: (_emailController.text.isNotEmpty) ? Text(
+                    AppStringSignIn.email,
+                    style: getSemiBoldStyle(fontSize: AppSize.s16, color: ColorManager.darkWhite1),) : null,
                   suffixIcon: (_emailController.text.isEmpty) ? null :
                      IconButton(
                        onPressed: () {
@@ -107,7 +128,42 @@ class _SignInWithEmailScreenState extends State<SignInWithEmailScreen> {
           customElevatedButton(
               context: context,
               text: AppStringSignIn.nextButton,
-              onPressed: (){},
+              onPressed: (){
+                if(_emailController.text.isEmpty){
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                          AppStringSignIn.validTextForm,
+                          style: getRegularStyle(fontSize: AppSize.s14, color: ColorManager.black),
+                      ),
+                      backgroundColor: ColorManager.error,
+                    ),
+                  );
+                }
+                if(!_emailController.text.contains('@')){
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        AppStringSignIn.validTextForm,
+                        style: getRegularStyle(fontSize: AppSize.s14, color: ColorManager.black),
+                      ),
+                      backgroundColor: ColorManager.error,
+                    ),
+                  );
+                }
+                if (!RegExp(r'\S+@\S+\.\S+').hasMatch(_emailController.text)) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        AppStringSignIn.validTextForm,
+                        style: getRegularStyle(fontSize: AppSize.s14, color: ColorManager.black),
+                      ),
+                      backgroundColor: ColorManager.error,
+                    ),
+                  );
+                }
+              },
+            color: activeColor ? ColorManager.darkWhite1 : ColorManager.darkGrey,
           )
         ],
       ),
